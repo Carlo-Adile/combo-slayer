@@ -24,17 +24,13 @@ Piccolo minigioco in stile arcade in cui l'obiettivo è sconfiggere dei piccoli 
 FUNZIONAMENTO:
 Il gioco è composto in queste macro aree a cui corrispondono le meccaniche di base:
 1. un counter progressivo di livelli, ognuno dei quali composto da 5 round.
-2. un nemico da battere per ogni singolo round, dotato di una barra di vita, e possibilmente più avanti nello sviluppo di gioco, di un oggetto dotato di classi e attributi differenziati e variegati.
+2. un nemico da battere per ogni singolo round, dotato di una barra di vita, trasformabile più avanti nello sviluppo di gioco in un oggetto dotato di classi e attributi personalizzati.
 3. un "deck" con le combinazioni che abbiamo dall'inizio della partita e ottenuto proseguendo tra i livelli di gioco.
 4. la combinazione attiva e i rispettivi tasti da premere per essere completata, in questa occasione, vengono sottratti punti vita dal nemico attivo in questo round. Le caratteristiche di base che differenziano le combo sono i danni inflitti e la combinazione, ma più avanti nello sviluppo sarebbe possibile integrare effetti unici.
 5. Un timer che sprona i giocatori a compiere azioni impiegando il minore tempo possibile. Allo scadere del tempo, il giocatore farà Game Over, per evitare ciò, può completare le combinazioni per ottenere tempo extra, sconfiggere i nemici attivi ed arrivare indenne sino al termine del livello di gioco corrente.
 6. Un sistema di progressione basato sull'accumulare frenetico di punteggio e l'aumentare della curva di difficoltà man mano che più livelli di gioco vengono completati.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-VERSIONI USATE:
-node -v
-v20.11.1
-npm -v
-10.2.4
+
 
 
 
