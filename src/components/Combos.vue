@@ -4,11 +4,9 @@ import { combos } from '../combos.js';
 
 export default {
   name: "Combos",
-  props: {
-    activeCombo: Object
-  },
   data() {
     return {
+      combos,
       currentCombo: {},
       currentComboKeys: [],
       userInput: [],
@@ -20,7 +18,6 @@ export default {
     chooseRandomCombo() {
       const randomIndex = Math.floor(Math.random() * combos.length);
       this.currentCombo = combos[randomIndex];
-      this.$emit('chooseRandomCombo', this.currentCombo);
       this.userInput = [];
       this.currentComboKeys = [];
       this.index = 0;
@@ -47,7 +44,7 @@ export default {
           //successo > combo prosegue o completata
           if (this.currentComboKeys.length === this.currentCombo.keys.length) {
             console.log("successo... hai completato la combo! preparazione nuova combo in corso...");
-            this.chooseRandomCombo();
+            this.completeCombo();   
           } else {
             console.log("successo... continua!")
           }
@@ -60,6 +57,13 @@ export default {
           console.log("Reset keys utente");
         }
       }
+    },
+    completeCombo() {
+      const damage = this.currentCombo.damage;
+      this.$emit('completedCombo', damage);
+      this.chooseRandomCombo();
+      //test
+      /* console.log(damage); */
     }
   },
   mounted() {
@@ -67,6 +71,7 @@ export default {
     window.addEventListener('keydown', this.handleKeyDown);
   }
 }
+
 </script>
 
 <template>
