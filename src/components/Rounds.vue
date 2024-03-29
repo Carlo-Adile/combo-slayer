@@ -8,7 +8,8 @@ export default {
   data() {
     return {
       currentEnemy: null,
-      currentRound: 1
+      currentRound: 1,
+      currentLevel: 1
     }
   },
   components: {
@@ -16,20 +17,6 @@ export default {
     Combos
   },
   methods: {
-    /* handleChooseRandomEnemy(enemy) {
-      this.enemy = enemy;
-      console.log("il nemico che rounds usa è...", enemy);
-    },
-    handleCompletedCombo(damage) {
-      this.enemy.health -= damage;
-      console.log("rounds dice che il danno è...", damage)
-      if (this.enemy.health <= 0){
-        console.log("il nemico attuale scende a 0 punti ferita!");
-        this.enemy = null;
-        this.$refs.enemies.chooseRandomEnemy();
-        this.currentRound++;
-        console.log("adesso sei al round...", this.currentRound);
-      } */
     handleCompletedCombo(damage) {
       console.log("rounds legge e cerca di passare questi danni: ", damage);
       //passa il danno da Combos a Enemies
@@ -38,18 +25,25 @@ export default {
     handleDefeatedEnemy() {
       console.log("riceviamo correttamente emit defeated enemy")
       this.currentRound++;
+      if(this.currentRound > 5){
+        console.log("hai completato un livello intero!")
+        this.currentRound = 1;
+        this.currentLevel++;
+      }
+      this.$emit('completedRound');
     }
   }
 }
-
 
 </script>
 
 <template>
   <div>
+    <h1>Current Level: {{ this.currentLevel }}</h1>
     <h2>Current Round: {{ this.currentRound }}</h2>
-
+    <br>
     <Enemies ref="enemies" @defeatedEnemy="handleDefeatedEnemy" />
+    <br>
     <Combos ref="damage" @completedCombo="handleCompletedCombo" />
   </div>
 </template>
