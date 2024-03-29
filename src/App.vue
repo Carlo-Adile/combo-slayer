@@ -1,10 +1,8 @@
 <script>
 import GameState from './components/GameState.vue';
-import Enemies from './components/Enemies.vue';
-import Levels from './components/Levels.vue';
-import Combos from './components/Combos.vue';
 import Rounds from './components/Rounds.vue';
 import Timer from './components/Timer.vue';
+import Score from './components/Score.vue';
 
 export default {
   name: "App",
@@ -16,7 +14,8 @@ export default {
   components: {
     Rounds,
     Timer,
-    GameState
+    GameState,
+    Score
     
   },
   mounted(){
@@ -34,6 +33,9 @@ export default {
 <template>
   <div>
     
+    <Score />
+    
+    <br>
 
     <Rounds @completedRound="handleCompletedRound" />
 

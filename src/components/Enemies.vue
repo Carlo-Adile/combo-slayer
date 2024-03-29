@@ -4,6 +4,7 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: "Enemies",
+  emits: ['chooseRandomEnemy', 'defeatedEnemy'],
   data() {
     return {
       currentEnemy: null,
