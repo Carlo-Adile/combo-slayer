@@ -1,5 +1,6 @@
 <script>
 import { enemies } from '../enemies.js';
+import { mapGetters } from 'vuex';
 
 export default {
   name: "Enemies",
@@ -9,6 +10,9 @@ export default {
       // Array originale dei nemici
       originalEnemies: []
     }
+  },
+  computed: {
+    ...mapGetters(['getGameState'])
   },
   methods: {
     chooseRandomEnemy() {
@@ -39,6 +43,7 @@ export default {
     this.originalEnemies = enemies.map(enemy => ({ ...enemy }));
     // Seleziona un nemico casuale all'avvio
     this.chooseRandomEnemy();
+    console.log("il mount di enemies legge game state: ", this.getGameState)
   }
 }
 </script>

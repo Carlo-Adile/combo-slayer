@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import Enemies from './Enemies.vue';
 import Combos from './Combos.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Rounds",
@@ -15,6 +16,17 @@ export default {
   components: {
     Enemies,
     Combos
+  },
+  computed: {
+    ...mapGetters(['getGameState'])
+  },
+  watch: {
+    getGameState(newState) {
+      if(newState === 'gameOver'){
+        this.currentRound = 1;
+        this.currentLevel = 1
+      }
+    }
   },
   methods: {
     handleCompletedCombo(damage) {

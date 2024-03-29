@@ -15,8 +15,12 @@ export default {
   },
   components: {
     Rounds,
-    Timer
+    Timer,
+    GameState
     
+  },
+  mounted(){
+    console.log("benvenuto!")
   },
   methods: {
     //passa a Timer un evento per aggiornare il timer rimanente
@@ -24,12 +28,12 @@ export default {
       this.$refs.timer.updateTimer();
     }
   }
-
 }
 </script>
 
 <template>
   <div>
+    
 
     <Rounds @completedRound="handleCompletedRound" />
 
@@ -37,6 +41,12 @@ export default {
     <br>
 
     <Timer ref="timer" />
+
+    <br>
+    <br>
+
+    <GameState />
+
 
   </div>
 
