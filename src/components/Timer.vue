@@ -21,7 +21,6 @@ export default {
       }
       //praticamente new game per il timer
       else if (newState === 'active' && this.oldState === 'gameOver'){
-        console.log("proviamo a resettare il timer da game over.. il nuovo tempo dovrebbe essere: ", this.startingTime);
         this.remainingTime = this.startingTime;
         this.startTimer();
       }
@@ -29,24 +28,20 @@ export default {
       else if (newState === 'paused' || newState === 'gameOver') {
         clearInterval(this.intervalId);
         this.oldState = newState;
-        console.log("old state è: ", this.oldState)
+        
+        console.log("aggiornamento stato del gioco: ", this.oldState);
       }
     }
   },
   methods: {
     startTimer() {
-      if (this.getGameState === 'gameOver') {
-        this.remainingTime = this.startingTime;
-      }
-
       if (this.getGameState === 'active') {
         this.intervalId = setInterval(() => {
           this.remainingTime--;
 
           if (this.remainingTime <= 0) {
             clearInterval(this.intervalId);
-            this.updateGameState('gameOver');
-            console.log("timer dice Game Over!!!");
+            this.timeOver();
           }
         }, 1000);
       }
@@ -57,6 +52,12 @@ export default {
       if (this.remainingTime > this.startingTime) {
         this.remainingTime = this.startingTime;
       }
+    },
+    timeOver(){
+      //cambia game state a game over
+      this.updateGameState('gameOver');
+      console.log("timer dice Game Over!!!");
+      console.log("secondo timer game state è...", this.getGameState);
     },
     ...mapActions(['updateGameState'])
   },
