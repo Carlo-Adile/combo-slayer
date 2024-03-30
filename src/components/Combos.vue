@@ -1,6 +1,7 @@
 <!-- set active combo -->
 <script>
 import { combos } from '../combos.js';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Combos",
@@ -12,6 +13,9 @@ export default {
       userInput: [],
       index: 0
     }
+  },
+  computed: {
+    ...mapGetters(['getGameState'])
   },
   methods: {
     /* assegna nuova combo, resetta il resettabile */
@@ -26,26 +30,28 @@ export default {
     },
     //aggiungi input del player in un array e aggiungi input corretti della combo attuale in un array
     handleKeyDown(event) {
-      if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        this.userInput.push(event.key);
-        this.currentComboKeys.push(this.currentCombo.keys[this.index])
-        this.index++;
+      if (this.getGameState === 'active') {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          this.userInput.push(event.key);
+          this.currentComboKeys.push(this.currentCombo.keys[this.index])
+          this.index++;
 
-        // Compara i due array per verificare corretto inserimento
-        if (this.userInput.every((value, index) => value === this.currentComboKeys[index])) {
-          //successo > combo prosegue o completata
-          if (this.currentComboKeys.length === this.currentCombo.keys.length) {
-            this.completeCombo();
+          // Compara i due array per verificare corretto inserimento
+          if (this.userInput.every((value, index) => value === this.currentComboKeys[index])) {
+            //successo > combo prosegue o completata
+            if (this.currentComboKeys.length === this.currentCombo.keys.length) {
+              this.completeCombo();
+            } else {
+              console.log("tasto combo corretto... continua!")
+            }
+            //fallimento combo! fai refactor in nuova funzione!!
           } else {
-            console.log("tasto combo corretto... continua!")
+            console.log("tasto incorretto... rinizia!");
+            this.userInput = [];
+            this.currentComboKeys = [];
+            this.index = 0;
+            console.log("Reset keys utente");
           }
-          //fallimento combo! fai refactor in nuova funzione!!
-        } else {
-          console.log("tasto incorretto... rinizia!");
-          this.userInput = [];
-          this.currentComboKeys = [];
-          this.index = 0;
-          console.log("Reset keys utente");
         }
       }
     },
