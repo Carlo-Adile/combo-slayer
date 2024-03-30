@@ -3,6 +3,7 @@ import GameState from './components/GameState.vue';
 import Rounds from './components/Rounds.vue';
 import Timer from './components/Timer.vue';
 import Score from './components/Score.vue';
+import GameOverScreen from './components/GameOverScreen.vue';
 
 export default {
   name: "App",
@@ -15,7 +16,8 @@ export default {
     Rounds,
     Timer,
     GameState,
-    Score
+    Score,
+    GameOverScreen
     
   },
   mounted(){
@@ -79,6 +81,7 @@ export default {
     @newGame="handleNewGame"
     />
 
+    <GameOverScreen />
 
   </div>
 

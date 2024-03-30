@@ -23,7 +23,7 @@ export default {
     ...mapActions(['updateGameState']),
 
     startNewGame() {
-      if (this.getGameState === 'preGame' || this.getGameState === 'gameOver') {
+      if (this.getGameState === 'preGame') {
         this.updateGameState('active');
         this.$emit('newGame');
       }
