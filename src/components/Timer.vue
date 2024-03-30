@@ -47,17 +47,16 @@ export default {
       }
     },
     updateTimer() {
-      console.log("aggiorniamo il timer!")
+      console.log("aggiungiamo 1 secondo al timer")
       this.remainingTime += 1;
       if (this.remainingTime > this.startingTime) {
         this.remainingTime = this.startingTime;
       }
     },
+    //GAME OVER !!!
     timeOver(){
-      //cambia game state a game over
       this.updateGameState('gameOver');
-      console.log("timer dice Game Over!!!");
-      console.log("secondo timer game state è...", this.getGameState);
+      this.$emit('gameOver');
     },
     ...mapActions(['updateGameState'])
   },

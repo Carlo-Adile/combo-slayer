@@ -21,12 +21,9 @@ export default {
       this.userInput = [];
       this.currentComboKeys = [];
       this.index = 0;
+
       console.log("la nuova combo è...", this.currentCombo.name);
-
-      //test
-      /* console.log("Keys della combo attuale: ", this.currentCombo.keys) */
     },
-
     //aggiungi input del player in un array e aggiungi input corretti della combo attuale in un array
     handleKeyDown(event) {
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -34,23 +31,17 @@ export default {
         this.currentComboKeys.push(this.currentCombo.keys[this.index])
         this.index++;
 
-        //test
-        /* console.log("key premuta: ", this.userInput)
-        console.log("Keys inserite dal player: ", this.userInput);
-        console.log("Keys che stiamo confrontando: ", this.currentComboKeys); */
-
         // Compara i due array per verificare corretto inserimento
         if (this.userInput.every((value, index) => value === this.currentComboKeys[index])) {
           //successo > combo prosegue o completata
           if (this.currentComboKeys.length === this.currentCombo.keys.length) {
-            console.log("successo... hai completato la combo! preparazione nuova combo in corso...");
-            this.completeCombo();   
+            this.completeCombo();
           } else {
-            console.log("successo... continua!")
+            console.log("tasto combo corretto... continua!")
           }
-          //fallimento !fai refactor in nuova funzione!!
+          //fallimento combo! fai refactor in nuova funzione!!
         } else {
-          console.log("fallimento... rinizia!");
+          console.log("tasto incorretto... rinizia!");
           this.userInput = [];
           this.currentComboKeys = [];
           this.index = 0;
@@ -59,11 +50,11 @@ export default {
       }
     },
     completeCombo() {
+      console.log(this.currentCombo.damage, "danni inflitti!")
+
       const damage = this.currentCombo.damage;
       this.$emit('completedCombo', damage);
       this.chooseRandomCombo();
-      //test
-      /* console.log(damage); */
     }
   },
   mounted() {

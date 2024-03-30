@@ -17,21 +17,18 @@ export default {
   },
   methods: {
     chooseRandomEnemy() {
-      console.log("Enemies sta producendo un nemico...");
+      console.log("Generazione nemico in corso...");
       const randomIndex = Math.floor(Math.random() * this.originalEnemies.length);
       this.currentEnemy = this.originalEnemies[randomIndex];
       this.$emit('chooseRandomEnemy', this.currentEnemy);
     },
     applyDamage(damage) {
-      console.log("Enemies legge damage traslato da Rounds: ", damage);
       this.currentEnemy.health -= damage;
       if (this.currentEnemy.health <= 0) {
         this.defeatEnemy();
       }
     },
     defeatEnemy() {
-      console.log("defeatEnemy richiamata!");
-
       this.$emit('defeatedEnemy');
       // Reimposta la vita del nemico corrente alla vita massima
       this.currentEnemy.health = this.currentEnemy.maxHealth;
@@ -44,7 +41,6 @@ export default {
     this.originalEnemies = enemies.map(enemy => ({ ...enemy }));
     // Seleziona un nemico casuale all'avvio
     this.chooseRandomEnemy();
-    console.log("il mount di enemies legge game state: ", this.getGameState)
   }
 }
 </script>

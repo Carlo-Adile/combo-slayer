@@ -24,8 +24,8 @@ export default {
 
     startNewGame() {
       if (this.getGameState === 'preGame' || this.getGameState === 'gameOver') {
-        console.log("start new game");
         this.updateGameState('active');
+        this.$emit('newGame');
       }
     },
     toggleGameState() {
@@ -45,26 +45,12 @@ export default {
       probabilmente il conflitto è dovuto a start new game.
       pare che lo stato di gioco che controlliamo è sempre indietro di una fase.
       */
-     
-      //test
-      console.log("lo stato di gioco che controlliamo attualmente è...", this.getGameState);
       if (event.key === 'p' || event.key === 'P' || event.key === 'Escape' || event.key === 'esc') {
         if (this.getGameState !== 'gameOver') {
           this.toggleGameState();
         }
-        else if (this.getGameState === 'paused' && this.getGameState !== 'gameOver') {
-          this.toggleGameState();
-        }
       };
     }
-    /* if (this.getGameState !== 'gameOver') {
-      if (event.key === 'p' || event.key === 'P' || event.key === 'Escape' || event.key === 'esc') {
-        this.toggleGameState();
-      } else if (this.getGameState === 'paused') {
-        this.toggleGameState();
-      };
-    }
-  } */
   }
 }
 </script>
@@ -73,6 +59,7 @@ export default {
   <div>
     <h3>Stato di gioco: {{ this.getGameState }}</h3>
     <h4 v-if="getGameState === 'preGame'">Premi qualsiasi tasto per iniziare</h4>
+    <h4 v-if="getGameState === 'paused'">Premi p oppure esc per riprendere la partita</h4>
   </div>
 </template>
 

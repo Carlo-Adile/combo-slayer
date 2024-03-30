@@ -18,11 +18,12 @@ export default {
     Combos
   },
   computed: {
-    ...mapGetters(['getGameState'])
+    ...mapGetters(['getGameState']),
+    ...mapGetters(['getScore'])
   },
   watch: {
     getGameState(newState) {
-      if(newState === 'gameOver'){
+      if (newState === 'gameOver') {
         this.currentRound = 1;
         this.currentLevel = 1
       }
@@ -30,19 +31,26 @@ export default {
   },
   methods: {
     handleCompletedCombo(damage) {
-      console.log("rounds legge e cerca di passare questi danni: ", damage);
       //passa il danno da Combos a Enemies
       this.$refs.enemies.applyDamage(damage);
+      this.completedCombo++;
+
+      this.$emit('completedCombo');
     },
     handleDefeatedEnemy() {
-      console.log("riceviamo correttamente emit defeated enemy")
+      this.$emit('defeatedEnemy')
       this.currentRound++;
-      if(this.currentRound > 5){
-        console.log("hai completato un livello intero!")
-        this.currentRound = 1;
-        this.currentLevel++;
+      if (this.currentRound > 5) {
+        this.completeLevel();
       }
+
       this.$emit('completedRound');
+    },
+    completeLevel() {
+      console.log("hai completato un livello intero!")
+      this.currentRound = 1;
+      this.currentLevel++;
+      this.$emit('completeLevel');
     }
   }
 }

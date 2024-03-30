@@ -1,27 +1,38 @@
 import { createStore } from 'vuex';
 
 export default createStore({
-  //definire lo stato iniziale
   state: {
-    //la proprietà chiave!
     gameState: 'preGame',
+    score: 0
   },
-  //modificare lo stato
   mutations: {
-    setGameState(state, newState){
+    setGameState(state, newState) {
       state.gameState = newState;
+    },
+    increaseScore(state, addScore) {
+      state.score += addScore;
+    },
+    resetScore(state){
+      state.score = 0;
     }
   },
-  //azioni per mutare lo stato
   actions: {
-    updateGameState({ commit }, newState){
+    updateGameState({ commit }, newState) {
       commit('setGameState', newState);
+    },
+    updateScore({ commit }, addScore) {
+      commit('increaseScore', addScore);
+    },
+    resetScore({ commit }){
+      commit('resetScore');
     }
   },
-  //getter per ottenere lo stato corrente
   getters: {
     getGameState(state) {
-      return state.gameState
+      return state.gameState;
+    },
+    getScore(state) {
+      return state.score;
     }
   }
 })
