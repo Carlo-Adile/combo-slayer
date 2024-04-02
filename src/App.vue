@@ -1,90 +1,78 @@
 <script>
-import GameState from './components/GameState.vue';
-import Rounds from './components/Rounds.vue';
-import Timer from './components/Timer.vue';
-import Score from './components/Score.vue';
-import GameOverScreen from './components/GameOverScreen.vue';
+import GameMaster from './components/GameMaster.vue';
+import TopBanner from './components/TopBanner.vue'
 
 export default {
   name: "App",
-  data(){
+  data() {
     return {
       enemy: null
     }
   },
   components: {
-    Rounds,
-    Timer,
-    GameState,
-    Score,
-    GameOverScreen
-    
-  },
-  mounted(){
-    console.log("benvenuto!")
+    GameMaster,
+    TopBanner
+
   },
   methods: {
-    //passa a Timer un evento per aggiornare il timer rimanente
-    handleCompletedRound(){
-      console.log("hai superato un round!")
-      this.$refs.timer.updateTimer();
-      this.$refs.score.updateRound();
-    },
-    handleDefeatedEnemy(){
-      console.log("hai sconfitto un nemico!")
-      this.$refs.score.updateEnemy();
-    },
-    handleCompletedCombo(){
-      console.log("hai eseguito una combo con successo!");
-      this.$refs.score.updateCombo();
-    },
-    handleCompletedLevel(){
-      console.log("hai completato un livello intero!");
-      this.$refs.score.updateLevel();
-    },
-    handleGameOver(){
-      console.log("Game Over");
-    },
-    handleNewGame(){
-      console.log("New game started!");
-      this.$refs.score.updateNewGame();
-    }
-  }
+
+  },
+
+
 }
+
 </script>
 
 <template>
-  <div>
-    
-    <Score ref="score" />
-    
-    <br>
+  <header id="app_header">
+    <div>
+      <TopBanner />
+    </div>
+  </header>
 
-    <Rounds 
-    @completedRound="handleCompletedRound"
-    @defeatedEnemy="handleDefeatedEnemy"
-    @completedCombo="handleCompletedCombo"
-    @completeLevel="handleCompletedLevel"
-     />
 
-    <br>
-    <br>
-
-    <Timer ref="timer" 
-    @gameOver="handleGameOver"
-    />
-
-    <br>
-    <br>
-
-    <GameState 
-    @newGame="handleNewGame"
-    />
-
-    <GameOverScreen />
+  <div id="app_main">
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col">
+          <div id="main_frame">
+            <GameMaster />
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import './assets/scss/structure.scss';
+
+* {
+  background-color: #282828;
+  color: lightgrey;
+  cursor: url('./assets/cursor/01.png'), auto;
+
+  overflow-y: hidden;
+}
+
+#app_header {
+  @include align_all;
+  height: 10vh;
+}
+
+#app_main {
+  @include align_all;
+  height: 90vh;
+
+  #main_frame {
+    /* width: 700px; */
+  }
+}
+
+#app_footer {
+  @include align_all;
+  height: 5vh;
+}
+</style>

@@ -46,10 +46,41 @@ export default {
 </script>
 
 <template>
-  <div v-if="currentEnemy">
-    <h2>Active Enemy: {{ currentEnemy.name }}</h2>
-    <h3>Health: {{ currentEnemy.health }} / {{ currentEnemy.maxHealth }}</h3>
+  <div id="enemy_frame" v-if="currentEnemy">
+    <div id="name_frame">
+      <p> {{ currentEnemy.name }} </p>
+    </div>
+    <div id="health_frame">
+      <p> {{ currentEnemy.health }}/{{ currentEnemy.maxHealth }}     Health</p>
+    </div>
   </div>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+@import '../assets/scss/structure.scss';
+@import '../assets/scss/font';
+
+*{
+  color: black;
+  font-family: alagard;
+}
+
+#enemy_frame{
+  width: 400px;
+  height: 125px;
+  margin: 0 auto;
+  p{
+    margin: 0;
+  }
+}
+
+#name_frame{
+  font-size: 1.8rem;
+  
+}
+
+#health_frame{
+  font-size: 1.4rem;
+}
+
+</style>

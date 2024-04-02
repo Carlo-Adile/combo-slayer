@@ -4,8 +4,8 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
-      startingTime: 5,
-      remainingTime: 5,
+      startingTime: 10,
+      remainingTime: 10,
       intervalId: null,
       oldState: null
     };

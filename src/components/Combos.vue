@@ -18,6 +18,21 @@ export default {
     ...mapGetters(['getGameState'])
   },
   methods: {
+    getImageSource(key) {
+      // Sostituisci con i percorsi corretti delle immagini per le frecce direzionali
+      switch (key) {
+        case 'ArrowUp':
+          return './src/assets/UI/arrowTop.png';
+        case 'ArrowDown':
+          return './src/assets/UI/arrowBottom.png';
+        case 'ArrowLeft':
+          return './src/assets/UI/arrowLeft.png';
+        case 'ArrowRight':
+          return './src/assets/UI/arrowRight.png';
+        default:
+          return ''; // Ritorna un percorso vuoto per eventuali tasti non previsti
+      }
+    },
     /* assegna nuova combo, resetta il resettabile */
     chooseRandomCombo() {
       const randomIndex = Math.floor(Math.random() * combos.length);
@@ -72,25 +87,100 @@ export default {
 </script>
 
 <template>
-  <div v-if="currentCombo">
-    <h3>Current combo: {{ currentCombo.name }}</h3>
-    <ul>
-      <li v-for="(key, index) in currentCombo.keys" :key="index">
-        | {{ key }} |
-      </li>
-    </ul>
-    <h4>Damage: {{ currentCombo.damage }}</h4>
+  <div v-if="currentCombo" id="combo_box" class="container">
+    <!-- <h3>Current combo: {{ currentCombo.name }}</h3> -->
+    <div id="combo_frame" class="row align-content-start">
+      <div id="name_frame" class="col-12">
+        <div>
+          <p>{{ currentCombo.name }}</p>
+        </div>
+      </div>
+      <div  class="col-12">
+        <div id="buttons_frame">
+          <ul>
+            <li v-for="(key, index) in currentCombo.keys" :key="index">
+              <img :src="getImageSource(key)" alt="" class="img_fit" />
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+    <!-- <h4>Damage: {{ currentCombo.damage }}</h4> -->
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+@import '../assets/scss/structure.scss';
+@import '../assets/scss/font';
+
+* {
+  color: black;
+  font-family: alagard;
+}
+
+#combo_box {
+  @include align_all;
+
+  width: 100%;
+
+  /* border: 1px dashed lightgray; */
+}
+
+#combo_frame {
+  @include align_all;
+  width: 400px;
+  height: 125px;
+  padding-top: 0.5rem;
+  /* background-image: url('../assets/UI/Banner_Connected_Large.png');
+  background-repeat: no-repeat;
+  background-size: contain; */
+
+  /* border: 1px dashed white; */
+}
+
+#name_frame {
+  @include align_all;
+  
+  height: 30px;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+
+  /* border: 1px dashed white; */
+}
+
+#buttons_frame {
+  @include align_all;
+  /* width: 275px;
+  height: 75px; */
+
+  /* border: 1px dashed white; */
+}
+
+.img_fit {
+  width: 40px;
+  height: 40px;
+}
+
 ul {
+  margin: 0 auto;
+  padding: 0;
   list-style: none;
 
+
   li {
-    margin: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
     display: inline;
-    font-size: 1.5rem;
+
+    img {
+      margin: 0.25rem;
+    }
   }
 }
 </style>

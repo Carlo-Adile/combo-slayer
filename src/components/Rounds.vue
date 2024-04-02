@@ -58,16 +58,85 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>Current Level: {{ this.currentLevel }}</h1>
-    <h2>Current Round: {{ this.currentRound }}</h2>
-    <br>
-    <Enemies ref="enemies" @defeatedEnemy="handleDefeatedEnemy" />
-    <br>
-    <Combos ref="damage" @completedCombo="handleCompletedCombo" />
-  </div>
+  <!-- <div id="complete_container" class="mx-auto debug2">
+    
+  </div> -->
+  <div id="complete_UI" class="debug mx-auto">
+      <div id="level_frame" class="debug">
+      </div>
+      <div id="enemy_frame">
+        <Enemies ref="enemies" @defeatedEnemy="handleDefeatedEnemy" />
+      </div>
+      <div id="combo_frame" class="debug">
+        <Combos ref="damage" @completedCombo="handleCompletedCombo" />
+      </div>
+
+    </div>
+
+
+
 </template>
 
 <style lang="scss" scoped>
-/* Stili CSS */
+@import '../assets/scss/font';
+@import '../assets/scss/structure';
+
+.debug2 {
+  border: 1px dashed white;
+}
+
+#complete_container{
+  margin: 0 auto;
+  width: 600px;
+  height: 600px;
+}
+#complete_UI {
+  width: 575px;
+  height: 650px;
+  position: relative;
+  z-index: 1;
+
+  background-image: url('../src/assets/UI/complete_UI.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 96%;
+}
+
+#level_frame {
+  @include align_all;
+  /* original size: 480x400; current: 70% */
+  /* width: 336px;
+  height: 280px; */
+
+  /* original size: 480x400; current: 75% */
+  width: 360px;
+  height: 300px;
+
+  position: absolute;
+  top: 3%;
+  left: 18%;
+
+  background-image: url('../src/assets/levels/level_1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#enemy_frame {
+  width: 100%;
+  height: 300px;
+
+  position: absolute;
+  top: 38%;
+  left: 0%;
+}
+
+#combo_frame {
+  width: 100%;
+  height: 200px;
+
+  position: absolute;
+  top: 74%;
+  left: 0%;
+}
+
 </style>

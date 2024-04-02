@@ -29,12 +29,7 @@ export default {
         <h2>Game Over!</h2>
         <div>
           <h4>Punti totalizzati: {{  getScore }}</h4>
-          <!-- <ul>
-            <li>Livello raggiunto: </li>
-            <li>Round raggiunto: </li>
-            <li>Nemici sconfitti: </li>
-            <li>Combo completate: </li>
-          </ul> -->
+          
         </div>
         <button @click="restartGame">Restart</button>
       </div>
@@ -43,10 +38,19 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import '../assets/scss/structure.scss';
+@import '../assets/scss/font';
+
+*{
+  font-family: alagard;
+  color: black;
+}
+
 .modal-overlay {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
+  z-index: 1000;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
