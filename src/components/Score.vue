@@ -50,7 +50,7 @@ export default {
       this.completedLevel *= 1.2;
     },
     updateNewGame() {
-      console.log("reset punteggio di...", this.getScore)
+      console.log("reset punteggio di...", this.getScore.toFixed(0))
       this.completedLevel = 1.01;
       this.completedCombo = 0;
       this.completedRound = 0;

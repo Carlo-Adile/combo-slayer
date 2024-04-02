@@ -85,7 +85,7 @@ export default {
             this.currentAnimationIndex = 0;
           }
         }
-      }, 150);
+      }, 200);
     },
     cancelAnimation() {
       clearInterval(this.animationInterval);

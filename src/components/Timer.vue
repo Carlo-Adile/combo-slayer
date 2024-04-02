@@ -60,6 +60,7 @@ export default {
     timeOver() {
       this.updateGameState('gameOver');
       this.$emit('gameOver');
+      this.startingTime = 20;
     },
     reduceMaxTime(){
       this.startingTime -= 2;
