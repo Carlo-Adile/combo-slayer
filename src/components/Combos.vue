@@ -5,7 +5,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Combos",
-  emits: ['completedCombo'],
+  emits: ['completedCombo', 'newGame'],
   data() {
     return {
       combos,
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getImageSource(key) {
-      // Sostituisci con i percorsi corretti delle immagini per le frecce direzionali
+      //sostituisci i bottoni con i percorsi delle immagini
       switch (key) {
         case 'ArrowUp':
           return './src/assets/UI/arrowTop.png';
@@ -54,6 +54,11 @@ export default {
 
           // Compara i due array per verificare corretto inserimento
           if (this.userInput.every((value, index) => value === this.currentComboKeys[index])) {
+            /* this.$refs.retro1.volume = 0.3; */
+            this.$refs.minimalist1.play();
+            if (this.$refs.minimalist1.paused) { // Controlla se il suono è in pausa
+              this.$refs.minimalist1.play(); // Avvia il suono solo se è in pausa
+            }
             //successo > combo prosegue o completata
             if (this.currentComboKeys.length === this.currentCombo.keys.length) {
               this.completeCombo();
@@ -96,17 +101,28 @@ export default {
           <p>{{ currentCombo.name }}</p>
         </div>
       </div>
-      <div  class="col-12">
+      <div class="col-12">
         <div id="buttons_frame">
           <ul>
             <li v-for="(key, index) in currentCombo.keys" :key="index">
-              <img :src="getImageSource(key)" alt="" class="img_fit" :class="{'pressed': index < userInput.length }" />
+              <img :src="getImageSource(key)" alt="" class="img_fit" :class="{ 'pressed': index < userInput.length }" />
             </li>
           </ul>
+        </div>
+        <div id="damage_frame">
+          <p>{{ this.currentCombo.damage }}</p>
+
         </div>
       </div>
     </div>
   </div>
+
+  <!-- fx -->
+  <audio ref="fastBip" src="./src/assets/sound/fast_bip.mp3"></audio>
+  <audio ref="retro1" src="./src/assets/sound/Retro1.mp3"></audio>
+  <audio ref="retro2" src="./src/assets/sound/Retro2.mp3"></audio>
+  <audio ref="minimalist1" src="./src/assets/sound/Minimalist1.mp3"></audio>
+
 </template>
 
 <style lang="scss" scoped>
@@ -139,7 +155,7 @@ export default {
 
 #name_frame {
   @include align_all;
-  
+
   height: 30px;
   font-size: 1.5rem;
   margin-bottom: 0.4rem;
@@ -168,5 +184,14 @@ ul {
       margin: 0.25rem;
     }
   }
+}
+
+/* danni della combo attuale */
+#damage_frame {
+  position: absolute;
+  bottom: 10%;
+  left: 33.5%;
+
+  font-size: 1.5rem;
 }
 </style>

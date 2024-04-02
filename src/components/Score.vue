@@ -5,7 +5,7 @@ export default {
   name: "Score",
   data() {
     return {
-      completedLevel: 0,
+      completedLevel: 1.01,
       completedRound: 0,
       completedCombo: 0,
       defeatedEnemy: 0
@@ -18,13 +18,20 @@ export default {
     ...mapGetters(['getScore']),
     ...mapGetters(['getGameState'])
   },
+  watch: {
+    getGameState(newValue) {
+      if (newValue === 'gameOver') {
+        this.updateNewGame();
+      }
+    }
+  },
   methods: {
     ...mapActions(['updateScore']),
     ...mapActions(['resetScore']),
 
     updateRound() {
       this.completedRound++;
-      const addScore = 25;
+      const addScore = 25 * this.completedLevel;
       this.updateScore(addScore);
 
     },
@@ -35,15 +42,16 @@ export default {
       this.completedCombo++;
       const addScore = 10;
       this.updateScore(addScore)
+      this.completedLevel *= 1.02;
     },
     updateLevel() {
-      this.completedLevel++;
       const addScore = 100;
       this.updateScore(addScore);
+      this.completedLevel *= 1.2;
     },
     updateNewGame() {
       console.log("reset punteggio di...", this.getScore)
-      this.completedLevel = 0;
+      this.completedLevel = 1.01;
       this.completedCombo = 0;
       this.completedRound = 0;
       this.defeatedEnemy = 0;
@@ -55,16 +63,10 @@ export default {
 
 <template>
   <div id="score_ribbon" class="mx-auto">
-    <p>Score: {{ getScore }}</p>
-
-    <!-- <div id="info_score">
-      <ul>
-        <li>level -  {{ this.completedLevel }}</li>
-        <li>round -  {{ this.completedRound }}</li>
-        <li>combo -  {{ this.completedCombo }}</li>
-        <li>enemy -  {{ this.defeatedEnemy }}</li>
-      </ul>
-    </div> -->
+    <p>Score: {{ getScore.toFixed(0) }}</p>
+    <div id="multiplier">
+      {{ this.completedLevel.toFixed(2) }}x
+    </div>
   </div>
 </template>
 
@@ -83,14 +85,14 @@ export default {
   position: relative;
 
   /* background-image: url('../assets/UI/Ribbon_Red_Large_Complete.png'); */
-  background-image: url('../assets/UI/Ribbon_Red_Large.png');
+  background-image: url('../assets/UI/Ribbon_Red_Large_1Ribbon.png');
   background-repeat: no-repeat;
   background-size: contain;
 
   p{
     text-align: start;
     font-size: 1.4rem;
-    padding: 0.5rem 0 0 6rem;
+    padding: 0.5rem 0 0 3rem;
   }
 
   #info_score{
@@ -110,6 +112,13 @@ export default {
       }
     }
   }
+}
+
+#multiplier{
+  font-size: 1.3rem;
+  position: absolute;
+  top: 35%;
+  left: 25.5%;
 
 }
 </style>

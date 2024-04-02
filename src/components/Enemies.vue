@@ -80,13 +80,12 @@ export default {
       this.animationInterval = setInterval(() => {
         if (this.currentEnemy) {
           this.currentAnimationIndex++;
-          console.log("animazione completata");
+          
           if (this.currentAnimationIndex >= this.totalAnimation) {
             this.currentAnimationIndex = 0;
-            console.log("animazione resettata");
           }
         }
-      }, 100);
+      }, 150);
     },
     cancelAnimation() {
       clearInterval(this.animationInterval);

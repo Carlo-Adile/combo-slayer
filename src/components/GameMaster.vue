@@ -41,6 +41,7 @@ export default {
     handleCompletedLevel() {
       console.log("hai completato un livello intero!");
       this.$refs.score.updateLevel();
+      this.$refs.timer.restoreTimer();
     },
     handleGameOver() {
       console.log("Game Over");
@@ -55,26 +56,35 @@ export default {
 
 <template>
   <div class="container-fluid mx-auto">
-    <div class="row mx-auto justify-content-between">
-      <div class="col-3" id="score_container">
-        <Score ref="score" />
+    <div class="row mx-auto justify-content-center">
+      <div id="score_container">
+        <div>
+          <Score ref="score" />
+        </div>
+
       </div>
-      <div class="col-6">
+      <div class="col-12">
         <div id="gameover_container">
           <GameOverScreen />
         </div>
 
         <div>
           <Rounds @completedRound="handleCompletedRound" @defeatedEnemy="handleDefeatedEnemy"
-          @completedCombo="handleCompletedCombo" @completeLevel="handleCompletedLevel" />
+            @completedCombo="handleCompletedCombo" @completeLevel="handleCompletedLevel" />
         </div>
 
-        <Timer ref="timer" @gameOver="handleGameOver" />
-        
-        <br>
+
+
+
 
       </div>
-      <div class="col-3">
+
+      <div id="timer_frame">
+        <Timer ref="timer" @gameOver="handleGameOver" />
+      </div>
+
+
+      <div>
         <GameState @newGame="handleNewGame" />
       </div>
     </div>
@@ -84,17 +94,24 @@ export default {
 </template>
 
 <style scoped>
-*{
+* {
   padding: 0;
+  overflow-y: hidden;
+  margin: 0 auto;
 }
 
-#score_container{
-  position: relative;
+/* score */
+#score_container {
+  position: fixed;
+  width: 280px;
+  left: 18%;
+  bottom: 17%;
+}
 
-  div{
-    position: absolute;
-    left:40%;
-    bottom: 25%;
-  }
+#timer_frame {
+  position: fixed;
+  width: 60%;
+  bottom: 1%;
+  left: 20%;
 }
 </style>

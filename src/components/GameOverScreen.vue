@@ -14,24 +14,51 @@ export default {
   },
   methods: {
     ...mapActions(['updateGameState']),
-    restartGame() {
-      
+    newGame() {
+
       this.updateGameState('preGame');
+    },
+    resumeGame() {
+      this.updateGameState('active');
+    },
+    handleKeyDown() {
+      if (this.getGameState === 'levelComplete') {
+        this.updateGameState('active')
+      }
     }
+  },
+  mounted() {
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 }
 </script>
 
 <template>
   <div>
+    <!-- game over screen -->
     <div class="modal-overlay" v-show="getGameState === 'gameOver'">
       <div class="modal-content">
         <h2>Game Over!</h2>
         <div>
-          <h4>Punti totalizzati: {{  getScore }}</h4>
-          
+          <h4>Punti totalizzati: {{ getScore.toFixed(0) }}</h4>
+
         </div>
-        <button @click="restartGame">Restart</button>
+        <button @click="newGame">Start a new game</button>
+      </div>
+    </div>
+    <!-- pause screen -->
+    <div class="modal-overlay" v-show="getGameState === 'paused'">
+      <div class="modal-content">
+        <h2>Game paused</h2>
+        <button @click="resumeGame">| P | Resume the game |</button>
+      </div>
+    </div>
+    <!-- level complete -->
+    <div class="modal-overlay" v-show="getGameState === 'levelComplete'">
+      <div class="modal-content">
+        <h2>You've completed a level!</h2>
+        <p>Your timebar will be restored! get ready for a thougher challenge...</p>
+        <button @click="resumeGame" @keydown.enter="resumeGame" tabindex="0">| Enter | Go to the next level |</button>
       </div>
     </div>
   </div>
@@ -41,7 +68,7 @@ export default {
 @import '../assets/scss/structure.scss';
 @import '../assets/scss/font';
 
-*{
+* {
   font-family: alagard;
   color: black;
 }

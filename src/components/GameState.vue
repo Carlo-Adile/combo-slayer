@@ -3,6 +3,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "GameState",
+  emits: ['newGame'],
   data() {
     return {
 
@@ -26,25 +27,35 @@ export default {
       if (this.getGameState === 'preGame') {
         this.updateGameState('active');
         this.$emit('newGame');
+        this.$refs.track1.volume = 0.1;
+        this.$refs.track1.play();
+
       }
     },
     toggleGameState() {
       if (this.getGameState === 'active') {
         this.updateGameState('paused');
+        this.$refs.track1.pause();
       }
       else if (this.getGameState === 'paused') {
-        this.updateGameState('active')
+        this.updateGameState('active');
+        this.$refs.track1.play();
       }
       else if (this.getGameState === 'gameOver') {
+        this.$refs.track1.pause();
+        this.$refs.track1.currentTime = 0;
         console.log("non puoi entrare in pausa da game over")
       }
+      else if (this.getGameState === 'levelComplete') {
+        this.$refs.track1.pause();
+        this.updateGameState('levelComplete');
+        console.log("game state dice level complete >", this.getGameState)
+      }
+    },
+    disableTrack1() {
+      this.$refs.track1.volume = 0;
     },
     handleKeyPress(event) {
-      /* 
-      al momento non riesco a impedire che il gioco passi da game over a pause, anche se ciò non rovina il gioco, non è intenzionale.
-      probabilmente il conflitto è dovuto a start new game.
-      pare che lo stato di gioco che controlliamo è sempre indietro di una fase.
-      */
       if (event.key === 'p' || event.key === 'P' || event.key === 'Escape' || event.key === 'esc') {
         if (this.getGameState !== 'gameOver') {
           this.toggleGameState();
@@ -56,12 +67,52 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h3>Stato di gioco: {{ this.getGameState }}</h3>
-    <h4 v-if="getGameState === 'preGame'">Premi qualsiasi tasto per iniziare</h4>
-    <h4 v-if="getGameState === 'paused'">Premi p oppure esc per riprendere la partita</h4>
+  <div id="state_frame">
+    <!-- <h3>Stato di gioco: {{ this.getGameState }}</h3> -->
+    <!-- <p v-if="getGameState === 'preGame'">Premi qualsiasi tasto per iniziare</p>
+    <p v-if="getGameState === 'levelComplete'">Premi enter per iniziare il prossimo livello</p> -->
+    <button id="audio_button" @click="disableTrack1"></button>
   </div>
+
+  <!-- music -->
+  <audio ref="track1" src="./src/assets/sound/track1.mp3"></audio>
 </template>
 
 
-<style></style>
+<style lang="scss" scoped>
+@import '../assets/scss/font';
+@import '../assets/scss/structure';
+
+*{
+  font-family: alagard;
+}
+
+#state_frame{
+  position: absolute;
+  bottom: -0.5%;
+  left: 40%;
+  display: flex;
+  align-items: center;
+
+  p{
+    height: 20px;
+    display: inline;
+    font-size: 1.2rem;
+  }
+
+  #audio_button{
+    position: fixed;
+    bottom: 3%;
+    left: 97%;
+    display: inline;
+    background-color: rgba(255, 255, 255, 0.384);
+    width: 40px;
+    height:40px;
+    background-image: url(../src/assets/UI/Pressed_03.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+}
+
+</style>

@@ -31,6 +31,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['updateGameState']),
     handleCompletedCombo(damage) {
       //passa il danno da Combos a Enemies
       this.$refs.enemies.applyDamage(damage);
@@ -41,6 +42,10 @@ export default {
     handleDefeatedEnemy() {
       this.$emit('defeatedEnemy')
       this.currentRound++;
+      if(this.currentRound < 5){
+        this.$refs.roundCompletedSound.volume = 0.4;
+        this.$refs.roundCompletedSound.play()
+      }
       if (this.currentRound > 5) {
         this.completeLevel();
       }
@@ -52,6 +57,8 @@ export default {
       this.currentRound = 1;
       this.currentLevel++;
       this.$emit('completeLevel');
+      this.updateGameState('levelComplete');
+      this.$refs.levelCompletedSound.play()
     }
   }
 }
@@ -74,6 +81,9 @@ export default {
       <p>Level {{ this.currentLevel }} | Round {{ this.currentRound }}</p>
     </div>
 
+    <!-- fx -->
+    <audio ref="levelCompletedSound" src="./src/assets/sound/levelup.mp3"></audio>
+    <audio ref="roundCompletedSound" src="./src/assets/sound/roundup.mp3"></audio>
 
 </template>
 
@@ -86,41 +96,15 @@ export default {
   color: black;
 }
 
-#round_ribbon{
-  width: 280px;
-  height: 150px;
-
-  position: absolute;
-  right: 13%;
-  bottom: 24%;
-
-  background-image: url('../assets/UI/Ribbon_Red_Large.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  p{
-    /* text-align: start;
-    padding: 0.5rem 0 0 3rem; */
-
-    padding-top: 0.5rem;
-    font-size: 1.4rem;
-    
-  }
-
-}
-
-.debug2 {
-  border: 1px dashed white;
-}
-
 #complete_container{
   margin: 0 auto;
   width: 600px;
   height: 600px;
 }
+
 #complete_UI {
   width: 575px;
-  height: 650px;
+  height: 700px;
   position: relative;
   z-index: 1;
 
@@ -130,18 +114,16 @@ export default {
   background-size: 96%;
 }
 
+/* mondo */
 #level_frame {
   @include align_all;
-  /* original size: 480x400; current: 70% */
-  /* width: 336px;
-  height: 280px; */
 
   /* original size: 480x400; current: 75% */
   width: 360px;
   height: 300px;
 
   position: absolute;
-  top: 3%;
+  top: 2.5%;
   left: 18%;
 
   background-image: url('../src/assets/levels/level_1.png');
@@ -149,22 +131,43 @@ export default {
   background-size: contain;
 }
 
+/* nome nemico, punti vita */
 #enemy_frame {
   width: 100%;
   height: 300px;
 
   position: absolute;
-  top: 38%;
+  top: 36%;
   left: 0%;
 }
 
+/* nome combo, tasti da premere */
 #combo_frame {
   width: 100%;
   height: 200px;
 
   position: absolute;
-  top: 74%;
+  top: 68.5%;
   left: 0%;
+}
+
+/* fiocco rosso dx: level, round */
+#round_ribbon{
+  width: 280px;
+  height: 150px;
+
+  position: absolute;
+  right: 17%;
+  bottom: 16%;
+
+  background-image: url('../assets/UI/Ribbon_Red_Large.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  p{
+    padding-top: 0.5rem;
+    font-size: 1.4rem;
+  }
 }
 
 </style>
