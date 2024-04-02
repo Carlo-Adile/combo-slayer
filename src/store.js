@@ -3,7 +3,8 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     gameState: 'preGame',
-    score: 0
+    score: 0,
+    finalScore: 0
   },
   mutations: {
     setGameState(state, newState) {
@@ -13,6 +14,7 @@ export default createStore({
       state.score += addScore;
     },
     resetScore(state){
+      state.finalScore = state.score;
       state.score = 0;
     }
   },
@@ -33,6 +35,9 @@ export default createStore({
     },
     getScore(state) {
       return state.score;
+    },
+    getFinalScore(state){
+      return state.finalScore;
     }
   }
 })

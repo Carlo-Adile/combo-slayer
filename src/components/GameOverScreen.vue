@@ -10,6 +10,7 @@ export default {
   },
   computed: {
     ...mapGetters(['getScore']),
+    ...mapGetters(['getFinalScore']),
     ...mapGetters(['getGameState'])
   },
   methods: {
@@ -40,7 +41,7 @@ export default {
       <div class="modal-content">
         <h2>Game Over!</h2>
         <div>
-          <h4>Punti totalizzati: {{ getScore.toFixed(0) }}</h4>
+          <h4>Punti totalizzati: {{ getFinalScore.toFixed(0) }}</h4>
 
         </div>
         <button @click="newGame">Start a new game</button>
