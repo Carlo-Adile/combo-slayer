@@ -6,6 +6,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Rounds",
+  emits: ['completedRound', 'defeatedEnemy', 'completedCombo', 'completeLevel'],
   data() {
     return {
       currentEnemy: null,
@@ -58,9 +59,6 @@ export default {
 </script>
 
 <template>
-  <!-- <div id="complete_container" class="mx-auto debug2">
-    
-  </div> -->
   <div id="complete_UI" class="debug mx-auto">
       <div id="level_frame" class="debug">
       </div>
@@ -70,9 +68,11 @@ export default {
       <div id="combo_frame" class="debug">
         <Combos ref="damage" @completedCombo="handleCompletedCombo" />
       </div>
-
     </div>
 
+    <div id="round_ribbon">
+      <p>Level {{ this.currentLevel }} | Round {{ this.currentRound }}</p>
+    </div>
 
 
 </template>
@@ -80,6 +80,34 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/font';
 @import '../assets/scss/structure';
+
+*{
+  font-family: alagard;
+  color: black;
+}
+
+#round_ribbon{
+  width: 280px;
+  height: 150px;
+
+  position: absolute;
+  right: 13%;
+  bottom: 24%;
+
+  background-image: url('../assets/UI/Ribbon_Red_Large.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  p{
+    /* text-align: start;
+    padding: 0.5rem 0 0 3rem; */
+
+    padding-top: 0.5rem;
+    font-size: 1.4rem;
+    
+  }
+
+}
 
 .debug2 {
   border: 1px dashed white;

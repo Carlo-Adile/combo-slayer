@@ -54,7 +54,7 @@ export default {
 </script>
 
 <template>
-  <div class="container-fluid border mx-auto">
+  <div class="container-fluid mx-auto">
     <div class="row mx-auto justify-content-between">
       <div class="col-3" id="score_container">
         <Score ref="score" />
@@ -63,16 +63,13 @@ export default {
         <div id="gameover_container">
           <GameOverScreen />
         </div>
-        
 
-
-        <Rounds @completedRound="handleCompletedRound" @defeatedEnemy="handleDefeatedEnemy"
+        <div>
+          <Rounds @completedRound="handleCompletedRound" @defeatedEnemy="handleDefeatedEnemy"
           @completedCombo="handleCompletedCombo" @completeLevel="handleCompletedLevel" />
+        </div>
 
         <Timer ref="timer" @gameOver="handleGameOver" />
-
-        
-
         
         <br>
 

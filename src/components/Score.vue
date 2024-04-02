@@ -24,7 +24,7 @@ export default {
 
     updateRound() {
       this.completedRound++;
-      const addScore = 5;
+      const addScore = 25;
       this.updateScore(addScore);
 
     },
@@ -33,12 +33,12 @@ export default {
     },
     updateCombo() {
       this.completedCombo++;
-      const addScore = 5;
+      const addScore = 10;
       this.updateScore(addScore)
     },
     updateLevel() {
       this.completedLevel++;
-      const addScore = 50;
+      const addScore = 100;
       this.updateScore(addScore);
     },
     updateNewGame() {
@@ -56,14 +56,15 @@ export default {
 <template>
   <div id="score_ribbon" class="mx-auto">
     <p>Score: {{ getScore }}</p>
-    <div id="info_score">
+
+    <!-- <div id="info_score">
       <ul>
-        <li>level: {{ this.completedLevel }}</li>
-        <li>round: {{ this.completedRound }}</li>
-        <li>combo: {{ this.completedCombo }}</li>
-        <li>enemy: {{ this.defeatedEnemy }}</li>
+        <li>level -  {{ this.completedLevel }}</li>
+        <li>round -  {{ this.completedRound }}</li>
+        <li>combo -  {{ this.completedCombo }}</li>
+        <li>enemy -  {{ this.defeatedEnemy }}</li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -81,14 +82,15 @@ export default {
   height: 150px;
   position: relative;
 
-  background-image: url('../assets/UI/Ribbon_Red_Large_Complete.png');
+  /* background-image: url('../assets/UI/Ribbon_Red_Large_Complete.png'); */
+  background-image: url('../assets/UI/Ribbon_Red_Large.png');
   background-repeat: no-repeat;
   background-size: contain;
 
   p{
     text-align: start;
     font-size: 1.4rem;
-    padding: 0.3rem 0 0 4rem;
+    padding: 0.5rem 0 0 6rem;
   }
 
   #info_score{

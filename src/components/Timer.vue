@@ -1,11 +1,27 @@
+<template>
+  <div id="timer_container" class="row w-100 d-flex mx-auto mb-4 justify-content-center">
+    <div class="col-12 mb-2 mx-auto">
+      <img src="../assets/hourglass/Inverted hourglass14.png" alt="">
+    </div>
+    <div class="col-12 mx-auto">
+      <div id="my_progress" class="progress" role="progressbar" aria-label="Timer" aria-valuenow="100" aria-valuemin="0"
+        aria-valuemax="100">
+        <div class="progress-bar bg-danger" role="progressbar" :style="{ width: progress + '%' }">{{
+          remainingTime.toFixed(1) }} secondi rimanenti
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
     return {
-      startingTime: 10,
-      remainingTime: 10,
+      startingTime: 20,
+      remainingTime: 20,
       intervalId: null,
       oldState: null
     };
@@ -15,21 +31,14 @@ export default {
   },
   watch: {
     getGameState(newState) {
-      //avvia il timer quando lo stato di gioco diventa "active"
       if (newState === 'active' && this.oldState !== 'gameOver') {
         this.startTimer();
-      }
-      //praticamente new game per il timer
-      else if (newState === 'active' && this.oldState === 'gameOver'){
+      } else if (newState === 'active' && this.oldState === 'gameOver') {
         this.remainingTime = this.startingTime;
         this.startTimer();
-      }
-      //interrompe il timer quando lo stato di gioco diventa "paused" o "gameOver"
-      else if (newState === 'paused' || newState === 'gameOver') {
+      } else if (newState === 'paused' || newState === 'gameOver') {
         clearInterval(this.intervalId);
         this.oldState = newState;
-        
-        console.log("aggiornamento stato del gioco: ", this.oldState);
       }
     }
   },
@@ -37,24 +46,21 @@ export default {
     startTimer() {
       if (this.getGameState === 'active') {
         this.intervalId = setInterval(() => {
-          this.remainingTime--;
-
+          this.remainingTime -= 0.1;
           if (this.remainingTime <= 0) {
             clearInterval(this.intervalId);
             this.timeOver();
           }
-        }, 1000);
+        }, 100);
       }
     },
     updateTimer() {
-      console.log("aggiungiamo 1 secondo al timer")
       this.remainingTime += 1;
       if (this.remainingTime > this.startingTime) {
         this.remainingTime = this.startingTime;
       }
     },
-    //GAME OVER !!!
-    timeOver(){
+    timeOver() {
       this.updateGameState('gameOver');
       this.$emit('gameOver');
     },
@@ -63,7 +69,7 @@ export default {
   computed: {
     ...mapGetters(['getGameState']),
     progress() {
-      return (this.remainingTime / this.startingTime) * 100;
+      return ((this.remainingTime) / this.startingTime) * 100;
     }
   },
   beforeUnmount() {
@@ -72,16 +78,12 @@ export default {
 };
 </script>
 
-<template>
-  <div>
-    <p>Remaining Time: {{ remainingTime }} seconds</p>
-    <div class="progress" role="progressbar" aria-label="Timer" aria-valuenow="100" aria-valuemin="0"
-      aria-valuemax="100">
-      <div class="progress-bar" role="progressbar" :style="{ width: progress + '%' }">{{ progress }}%</div>
-    </div>
-  </div>
-</template>
-
 <style scoped>
-/* Stili della progress bar */
+#timer_container {
+  margin: 0 auto;
+}
+
+#my_progress {
+  border: 1px solid #d7d1a7;
+}
 </style>

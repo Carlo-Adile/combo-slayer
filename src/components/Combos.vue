@@ -5,6 +5,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Combos",
+  emits: ['completedCombo'],
   data() {
     return {
       combos,
@@ -99,19 +100,12 @@ export default {
         <div id="buttons_frame">
           <ul>
             <li v-for="(key, index) in currentCombo.keys" :key="index">
-              <img :src="getImageSource(key)" alt="" class="img_fit" />
+              <img :src="getImageSource(key)" alt="" class="img_fit" :class="{'pressed': index < userInput.length }" />
             </li>
           </ul>
         </div>
-
       </div>
     </div>
-
-
-
-
-
-    <!-- <h4>Damage: {{ currentCombo.damage }}</h4> -->
   </div>
 </template>
 
@@ -122,6 +116,10 @@ export default {
 * {
   color: black;
   font-family: alagard;
+}
+
+.pressed {
+  filter: brightness(0.7);
 }
 
 #combo_box {
@@ -137,11 +135,6 @@ export default {
   width: 400px;
   height: 125px;
   padding-top: 0.5rem;
-  /* background-image: url('../assets/UI/Banner_Connected_Large.png');
-  background-repeat: no-repeat;
-  background-size: contain; */
-
-  /* border: 1px dashed white; */
 }
 
 #name_frame {
@@ -150,16 +143,10 @@ export default {
   height: 30px;
   font-size: 1.5rem;
   margin-bottom: 0.4rem;
-
-  /* border: 1px dashed white; */
 }
 
 #buttons_frame {
   @include align_all;
-  /* width: 275px;
-  height: 75px; */
-
-  /* border: 1px dashed white; */
 }
 
 .img_fit {
@@ -171,7 +158,6 @@ ul {
   margin: 0 auto;
   padding: 0;
   list-style: none;
-
 
   li {
     display: flex;
