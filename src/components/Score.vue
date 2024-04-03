@@ -40,14 +40,14 @@ export default {
     },
     updateCombo() {
       this.completedCombo++;
-      const addScore = 10;
+      const addScore = 10 * this.completedLevel;
       this.updateScore(addScore)
       this.completedLevel *= 1.02;
     },
     updateLevel() {
       const addScore = 100;
       this.updateScore(addScore);
-      this.completedLevel *= 1.2;
+      this.completedLevel *= 1.1;
     },
     updateNewGame() {
       console.log("reset punteggio di...", this.getScore.toFixed(0))

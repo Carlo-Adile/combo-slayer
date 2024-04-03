@@ -4,8 +4,8 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
-      startingTime: 20,
-      remainingTime: 20,
+      startingTime: 15,
+      remainingTime: 15,
       intervalId: null,
       oldState: null
     };
@@ -49,7 +49,7 @@ export default {
       }
     },
     updateTimer() {
-      this.remainingTime += 1;
+      this.remainingTime += 1.5;
       if (this.remainingTime > this.startingTime) {
         this.remainingTime = this.startingTime;
       }
@@ -60,11 +60,11 @@ export default {
     timeOver() {
       this.updateGameState('gameOver');
       this.$emit('gameOver');
-      this.startingTime = 20;
+      this.startingTime = 15;
     },
     reduceMaxTime(){
-      this.startingTime -= 2;
-      this.remainingTime -= 2;
+      this.startingTime -= 1;
+      this.remainingTime -= 1;
        console.log("il tempo diminuisce....", this.startingTime);
     },
     levelCompletePoints(){

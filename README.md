@@ -27,7 +27,7 @@ Il gioco è composto in queste macro aree a cui corrispondono le meccaniche di b
 2. un nemico da battere per ogni singolo round, dotato di una barra di vita.
 3. un "deck" con le combinazioni che dovremmo completare.
 4. la combinazione attiva e i rispettivi tasti da premere per essere completata.
-5. Un timer che si accorcia man mano che si superano i round. è possibile sconfiggere i nemici per ripristinare 1 secondo, oppure completare 1 intero livello per ripristinare fino al massimo attuale.
+5. Un timer che si accorcia man mano che si superano i round. è possibile sconfiggere i nemici per ripristinare 1.5 secondi, oppure completare 1 intero livello per ripristinare fino al massimo attuale.
 6. Un sistema di progressione basato sull'accumulare frenetico di punteggio e l'aumentare della curva di difficoltà man mano che più livelli di gioco vengono completati.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
