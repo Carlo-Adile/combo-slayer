@@ -18,26 +18,22 @@ export default {
 
   },
 
-
 }
 
 </script>
 
 <template>
   <header id="app_header">
-    <div>
-      <TopBanner />
-    </div>
+    <TopBanner />
+    <hr class="w-100 border border-2 border-danger">
   </header>
-
 
   <div id="app_main">
     <GameMaster />
-    
   </div>
 
   <div id="app_footer">
-
+    <hr class="w-100 border border-2 border-danger">
   </div>
 
 </template>
@@ -55,7 +51,13 @@ export default {
 
 #app_header {
   @include align_all;
-  height: 10vh;
+  height: 12vh;
+
+  position: relative;
+  hr{
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 #app_main {
@@ -66,6 +68,14 @@ export default {
 
 #app_footer {
   @include align_all;
-  height: 10vh;
+  position: relative;
+  height: 8vh;
+
+  position: relative;
+  hr{
+    position: absolute;
+    top: 0;
+  }
 }
+
 </style>

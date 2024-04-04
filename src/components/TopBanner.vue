@@ -18,8 +18,8 @@ export default {
   <div id="top_banner">
     <div class="container-fluid">
       <div class="row w-100 mx-auto">
-        <div class="col w-100 mt-4" >
-          <h1>Combo Slayer</h1>
+        <div class="col w-100" >
+          <h2>Combo Slayer</h2>
         </div>
 
       </div>
