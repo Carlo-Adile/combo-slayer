@@ -73,11 +73,11 @@ export default {
       <div class="modal-content">
         <br>
         <h2>Welcome to Combo Slayer!</h2>
-        <p>Press directional arrows | <i class="fa-solid fa-arrow-up"></i> <i class="fa-solid fa-arrow-right"></i> <i class="fa-solid fa-arrow-down"></i> <i class="fa-solid fa-arrow-left"></i> | to complete combo and inflict damage to enemies!</p>
+        <p>Press directional arrows | <i class="fa-solid fa-arrow-left"></i> <i class="fa-solid fa-arrow-up"></i> <i class="fa-solid fa-arrow-down"></i> <i class="fa-solid fa-arrow-right"></i>   | to complete combo and inflict damage to enemies!</p>
         <br>
         <h4>Beware of the time running out!</h4>
-        <p>Timebar will slightly restore every time you complete a full combo sequence </p>
-        <p>or completely upon completing a level consisting of 5 rounds when beating a whole level made of 5 rounds</p>
+        <p>Timebar will slightly restore every time you complete a full combo sequence, </p>
+        <p>or completely upon completing a level consisting of 5 rounds.</p>
         
         <button @click="resumeGame" @keydown.enter="resumeGame" tabindex="0">| Enter | Start a new game! |</button>
       </div>
@@ -116,5 +116,10 @@ export default {
 
 i{
   font-size: 1.2rem;
+}
+
+p{
+  font-size: 1.1rem;
+  line-height: 0.9rem;
 }
 </style>
