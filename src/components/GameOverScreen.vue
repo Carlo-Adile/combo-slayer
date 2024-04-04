@@ -15,21 +15,24 @@ export default {
   },
   methods: {
     ...mapActions(['updateGameState']),
-    newGame() {
 
+    newGame() {
       this.updateGameState('preGame');
     },
     resumeGame() {
       this.updateGameState('active');
     },
-    handleKeyDown() {
-      if (this.getGameState === 'levelComplete') {
+    handleKeyDown(event) {
+      if (this.getGameState === 'levelComplete' && event.key === 'Enter') {
         this.updateGameState('active')
       }
     }
   },
   mounted() {
     window.addEventListener('keydown', this.handleKeyDown);
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 }
 </script>
@@ -42,7 +45,6 @@ export default {
         <h2>Game Over!</h2>
         <div>
           <h4>Punti totalizzati: {{ getFinalScore.toFixed(0) }}</h4>
-
         </div>
         <button @click="newGame">Start a new game</button>
       </div>

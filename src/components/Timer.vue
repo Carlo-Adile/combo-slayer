@@ -24,8 +24,8 @@ export default {
       } else if (newState === 'paused' || newState === 'gameOver' || newState === 'levelComplete') {
         clearInterval(this.intervalId);
         this.oldState = newState;
-      } 
-      if (newState === 'levelComplete'){
+      }
+      if (newState === 'levelComplete') {
         console.log("il watch di timer viene chiamato...")
         this.reduceMaxTime();
         this.levelCompletePoints();
@@ -54,7 +54,7 @@ export default {
         this.remainingTime = this.startingTime;
       }
     },
-    restoreTimer(){
+    restoreTimer() {
       this.remainingTime = this.startingTime;
     },
     timeOver() {
@@ -62,12 +62,12 @@ export default {
       this.$emit('gameOver');
       this.startingTime = 15;
     },
-    reduceMaxTime(){
+    reduceMaxTime() {
       this.startingTime -= 1;
       this.remainingTime -= 1;
-       console.log("il tempo diminuisce....", this.startingTime);
+      console.log("il tempo diminuisce....", this.startingTime);
     },
-    levelCompletePoints(){
+    levelCompletePoints() {
       const maxPoints = 500;
       const percentage = (this.remainingTime / this.startingTime) * 100;
       const addScore = Math.floor((percentage / 100) * maxPoints)
@@ -88,10 +88,12 @@ export default {
 </script>
 
 <template>
-  <div id="timer_container" class="row w-100 d-flex mx-auto justify-content-center">
-    <div class="col-12 mx-auto mb-1">
+  <div id="my_timer" class="row w-100 d-flex mx-auto justify-content-center align-items-center">
+    <!-- hourglass frame -->
+    <div class="col-12 mx-auto" id="my_hourglass">
       <img src="../assets/hourglass/Inverted hourglass14.png" alt="">
     </div>
+    <!-- timebar frame -->
     <div class="col-12 mx-auto">
       <div id="my_progress" class="progress" role="progressbar" aria-label="Timer" aria-valuenow="100" aria-valuemin="0"
         aria-valuemax="100">
@@ -101,21 +103,34 @@ export default {
       </div>
     </div>
   </div>
+
 </template>
 
 <style lang="scss" scoped>
 @import '../assets/scss/font';
 @import '../assets/scss/structure';
 
-*{
+* {
   font-family: alagard;
 }
 
-#timer_container {
-  margin: 0 auto;
+#my_timer{
+  height:100%;
+}
+
+#my_hourglass{
+  height: 45%;
+  margin-bottom: -0.5rem;
+
+  img{
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
 }
 
 #my_progress {
   border: 1px solid #d7d1a7;
 }
+
 </style>

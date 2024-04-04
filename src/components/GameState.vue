@@ -46,11 +46,6 @@ export default {
         this.$refs.track1.currentTime = 0;
         console.log("non puoi entrare in pausa da game over")
       }
-      else if (this.getGameState === 'levelComplete') {
-        this.$refs.track1.pause();
-        this.updateGameState('levelComplete');
-        console.log("game state dice level complete >", this.getGameState)
-      }
     },
     disableTrack1() {
       this.$refs.track1.volume = 0;
@@ -67,6 +62,7 @@ export default {
 </script>
 
 <template>
+  <!-- dev check -->
   <div id="state_frame">
     <!-- <h3>Stato di gioco: {{ this.getGameState }}</h3> -->
     <!-- <p v-if="getGameState === 'preGame'">Premi qualsiasi tasto per iniziare</p>
@@ -89,8 +85,8 @@ export default {
 
 #state_frame{
   position: absolute;
-  bottom: -0.5%;
-  left: 40%;
+  top: 0%;
+  left: 0%;
   display: flex;
   align-items: center;
 
@@ -111,7 +107,6 @@ export default {
     background-image: url(../src/assets/UI/Pressed_03.png);
     background-repeat: no-repeat;
     background-size: cover;
-    
   }
 }
 

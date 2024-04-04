@@ -5,7 +5,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Combos",
-  emits: ['completedCombo', 'newGame'],
+  emits: ['completedCombo'],
   data() {
     return {
       combos,
@@ -93,27 +93,22 @@ export default {
 </script>
 
 <template>
-  <div v-if="currentCombo" id="combo_box" class="container">
-    <!-- <h3>Current combo: {{ currentCombo.name }}</h3> -->
-    <div id="combo_frame" class="row align-content-start">
-      <div id="name_frame" class="col-12">
-        <div>
-          <p>{{ currentCombo.name }}</p>
-        </div>
-      </div>
-      <div class="col-12">
-        <div id="buttons_frame">
-          <ul>
-            <li v-for="(key, index) in currentCombo.keys" :key="index">
-              <img :src="getImageSource(key)" alt="" class="img_fit" :class="{ 'pressed': index < userInput.length }" />
-            </li>
-          </ul>
-        </div>
-        <div id="damage_frame">
-          <p>{{ this.currentCombo.damage }}</p>
-
-        </div>
-      </div>
+  <div v-if="currentCombo" id="my_combos">
+    <!-- combo name -->
+    <div id="my_name">
+      <p>{{ currentCombo.name }}</p>
+    </div>
+    <!-- buttons to press -->
+    <div id="my_buttons">
+      <ul>
+        <li v-for="(key, index) in currentCombo.keys" :key="index">
+          <img :src="getImageSource(key)" alt="" class="img_fit" :class="{ 'pressed': index < userInput.length }" />
+        </li>
+      </ul>
+    </div>
+    <!-- damage frame -->
+    <div id="my_damage">
+      <p>{{ this.currentCombo.damage }}</p>
     </div>
   </div>
 
@@ -138,60 +133,58 @@ export default {
   filter: brightness(0.7);
 }
 
-#combo_box {
-  @include align_all;
-
+#my_combos {
+  height: 100%;
   width: 100%;
-
-  /* border: 1px dashed lightgray; */
 }
 
-#combo_frame {
-  @include align_all;
-  width: 400px;
-  height: 125px;
-  padding-top: 0.5rem;
+#my_name {
+  height: 20%;
+  width: 80%;
+  text-align: center;
+  margin-left: 0.5rem;
+  font-size: 1.4rem;
 }
 
-#name_frame {
-  @include align_all;
+#my_buttons {
+  height: 26%;
+  width: 80%;
+  display: flex;
 
-  height: 30px;
-  font-size: 1.5rem;
-  margin-bottom: 0.4rem;
-}
+  ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
 
-#buttons_frame {
-  @include align_all;
-}
+    li {
+      display: flex;
+      flex-wrap: nowrap;
+      display: inline;
 
-.img_fit {
-  width: 40px;
-  height: 40px;
-}
-
-ul {
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-
-  li {
-    display: flex;
-    flex-wrap: nowrap;
-    display: inline;
-
-    img {
-      margin: 0.25rem;
+      img {
+        height: 30px;
+        width: 30px;
+        /* height: 80%;
+        width: 25%; */
+        object-fit: cover;
+        margin: 0.25rem;
+      }
     }
   }
 }
 
 /* danni della combo attuale */
-#damage_frame {
+#my_damage {
   position: absolute;
-  bottom: 10%;
-  left: 33.5%;
+  top: 20%;
+  right: 0%;
 
-  font-size: 1.5rem;
+  width: 20%;
+  height: 26%;
+
+  p {
+    font-size: 1.8rem;
+    margin: 0;
+  }
 }
 </style>

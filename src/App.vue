@@ -32,16 +32,8 @@ export default {
 
 
   <div id="app_main">
-    <div class="container">
-      <div class="row mx-auto">
-        <div class="col">
-          <div id="main_frame">
-            <GameMaster />
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <GameMaster />
+    
   </div>
 
 </template>
@@ -64,15 +56,12 @@ export default {
 
 #app_main {
   @include align_all;
-  height: 90vh;
+  height: 80vh;
 
-  #main_frame {
-    /* width: 700px; */
-  }
 }
 
 #app_footer {
   @include align_all;
-  height: 5vh;
+  height: 10vh;
 }
 </style>

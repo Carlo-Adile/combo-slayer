@@ -33,7 +33,6 @@ export default {
       this.completedRound++;
       const addScore = 25 * this.completedLevel;
       this.updateScore(addScore);
-
     },
     updateEnemy() {
       this.defeatedEnemy++;
@@ -55,6 +54,8 @@ export default {
       this.completedCombo = 0;
       this.completedRound = 0;
       this.defeatedEnemy = 0;
+
+      /* store js */
       this.resetScore();
     }
   }
@@ -62,11 +63,8 @@ export default {
 </script>
 
 <template>
-  <div id="score_ribbon" class="mx-auto">
-    <p>Score: {{ getScore.toFixed(0) }}</p>
-    <div id="multiplier">
-      {{ this.completedLevel.toFixed(2) }}x
-    </div>
+  <div id="my_score">
+    <span>Score: {{ getScore.toFixed(0) }}</span> | <span>Multiplier: {{ this.completedLevel.toFixed(2) }} x</span>
   </div>
 </template>
 
@@ -74,51 +72,14 @@ export default {
 @import '../assets/scss/structure.scss';
 @import '../assets/scss/font';
 
-*{
+* {
   font-family: alagard;
   color: black;
+  font-size: 1.25rem;
 }
 
-#score_ribbon {
-  width: 280px;
-  height: 150px;
-  position: relative;
+/* #my_score {
+  
+} */
 
-  /* background-image: url('../assets/UI/Ribbon_Red_Large_Complete.png'); */
-  background-image: url('../assets/UI/Ribbon_Red_Large_1Ribbon.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  p{
-    text-align: start;
-    font-size: 1.4rem;
-    padding: 0.5rem 0 0 3rem;
-  }
-
-  #info_score{
-    width: 120px;
-    height: 75px;
-    position: absolute;
-    left: 25%;
-    bottom: 10%;
-
-    ul{
-      list-style: none;
-      padding: 0;
-      text-align: start;
-
-      li{
-        line-height: 100%;
-      }
-    }
-  }
-}
-
-#multiplier{
-  font-size: 1.3rem;
-  position: absolute;
-  top: 35%;
-  left: 25.5%;
-
-}
 </style>
