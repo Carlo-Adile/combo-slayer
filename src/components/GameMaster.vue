@@ -184,7 +184,7 @@ world and enemy
   width: 50%;
   height: 33%;
 
-  border: 2px dashed black;
+  /* border: 2px dashed black; */
 }
 
 #my_world_frame {
