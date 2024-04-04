@@ -30,7 +30,6 @@ export default {
         this.$refs.track1.volume = 0.1;
         this.$refs.track1.play();
 
-        
       }
     },
     toggleGameState() {

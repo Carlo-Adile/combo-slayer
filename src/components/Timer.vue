@@ -4,8 +4,8 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
-      startingTime: 15,
-      remainingTime: 15,
+      startingTime: 20,
+      remainingTime: 20,
       intervalId: null,
       oldState: null
     };
@@ -60,15 +60,28 @@ export default {
     timeOver() {
       this.updateGameState('gameOver');
       this.$emit('gameOver');
-      this.startingTime = 15;
+      this.startingTime = 20;
     },
     reduceMaxTime() {
-      if (this.startingTime > 8) {
-        this.startingTime -= 1;
-        this.remainingTime -= 1;
-      } else {
+      if (this.startingTime > 12) {
+        this.startingTime -= 2;
+        this.remainingTime -= 2;
+      } else if (this.startingTime <= 12 && this.startingTime > 9) {
         this.startingTime -= 0.5;
         this.remainingTime -= 0.5;
+      } else if (this.startingTime <= 9 && this.startingTime > 5) {
+        this.startingTime -= 0.25;
+        this.remainingTime -= 0.25;
+      } else if (this.startingTime <= 5 && this.startingTime > 4) {
+        this.startingTime -= 0.15;
+        this.remainingTime -= 0.15;
+      } else if (this.startingTime <= 4 && this.startingTime > 2) {
+        this.startingTime -= 0.1;
+        this.remainingTime -= 0.1;
+      } else {
+        this.startingTime -= 0.01;
+        this.remainingTime -= 0.01;
+        console.log("helldiving");
       }
       console.log("il tempo diminuisce....", this.startingTime);
     },

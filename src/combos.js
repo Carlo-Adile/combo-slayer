@@ -30,5 +30,17 @@ export const combos = reactive([
     "name": "Bow Shot",
     "damage": 15,
     "keys": ["ArrowUp", "ArrowLeft", "ArrowLeft", "ArrowDown"]
+  },
+  {
+    "id": 6,
+    "name": "Shield Bash",
+    "damage": 10,
+    "keys": ["ArrowUp", "ArrowDown", "ArrowDown"]
+  },
+  {
+    "id": 7,
+    "name": "GreatAxe Slam",
+    "damage": 30,
+    "keys": ["ArrowUp", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "ArrowDown"]
   }
 ]); 
