@@ -148,7 +148,7 @@ export default {
 */
 
 .debug {
-  border: 1px dashed white;
+  /* border: 1px dashed white; */
 }
 
 #game_master_ui {

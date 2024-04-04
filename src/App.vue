@@ -36,6 +36,10 @@ export default {
     
   </div>
 
+  <div id="app_footer">
+
+  </div>
+
 </template>
 
 <style lang="scss" scoped>
