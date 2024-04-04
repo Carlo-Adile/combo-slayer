@@ -71,7 +71,7 @@ export default {
 <template>
   <!-- dev check -->
   <div id="state_frame" class="mx-2">
-    <p>Stato di gioco: {{ this.getGameState }}</p>
+    <!-- <p>Stato di gioco: {{ this.getGameState }}</p> -->
     <!-- <p v-if="getGameState === 'preGame'">Premi qualsiasi tasto per iniziare</p>
     <p v-if="getGameState === 'levelComplete'">Premi enter per iniziare il prossimo livello</p> -->
     <button id="audio_button" @click="disableTrack1"></button>
