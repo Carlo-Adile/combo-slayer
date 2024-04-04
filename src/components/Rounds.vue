@@ -29,7 +29,7 @@ export default {
   methods: {
     completeLevel() {
       this.$emit('completedLevel'); 
-      
+
       this.currentRound = 1;
       this.currentLevel++;
 
@@ -79,6 +79,8 @@ export default {
 
   p{
     font-size: 1.3rem;
+    padding: 0;
+    margin: 0;
   }
 
 

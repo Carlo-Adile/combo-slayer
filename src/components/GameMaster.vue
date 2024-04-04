@@ -65,6 +65,9 @@ export default {
       console.log("nemico sconfitto, passiamo al round successivo...")
       this.$refs.rounds.completedRound();
     },
+    handleTimeScore(timeScore){
+      this.$refs.score.updateTimeScore(timeScore);
+    },
     handleGameOver() {
       console.log("Game Over");
     },
@@ -84,30 +87,45 @@ export default {
     <div id="my_background">
       <img src="../assets/UI/game_Master_UI.png" alt="" class="responsive-img my_background">
 
-      <div id="my_world_frame">
-        <World />
+      <!-- world and enemy -->
+      <div id="my_main_frame">
+
+        <div id="my_world_frame">
+          <World />
+        </div>
+
+        <div id="my_enemy_frame">
+          <Enemies ref="enemies" @defeatedEnemy="handleDefeatedEnemy" />
+        </div>
+
+        <div id="my_rounds_frame">
+          <Rounds ref="rounds" @completedRound="handleCompletedRound" @completedLevel="handleCompletedLevel" />
+        </div>
+
+
       </div>
 
-      <div id="my_enemy_frame">
-        <Enemies ref="enemies" @defeatedEnemy="handleDefeatedEnemy" />
+      <!-- combos, score and other actions -->
+      <div id="my_second_frame">
+
+        <div id="my_combos_frame">
+          <Combos @completedCombo="handleCompletedCombo" />
+        </div>
+
+        <div class="" id="my_score_frame">
+          <Score ref="score" />
+        </div>
+
       </div>
 
-      <div class="" id="my_score_frame">
-        <Score ref="score" />
-      </div>
 
-      <div id="my_combos_frame">
-        <Combos @completedCombo="handleCompletedCombo" />
-      </div>
 
-      <div id="my_rounds_frame">
-        <Rounds ref="rounds" @completedRound="handleCompletedRound" @completedLevel="handleCompletedLevel" />
-      </div>
 
     </div>
 
     <div id="my_timer_frame">
-      <Timer ref="timer" @gameOver="handleGameOver" />
+      <Timer ref="timer" @gameOver="handleGameOver"
+      @remainingTimeScore="handleTimeScore" />
     </div>
 
     <!-- not visible on default -->
@@ -116,37 +134,6 @@ export default {
     <GameOverScreen />
 
   </div>
-
-  <!-- <div class="container-fluid mx-auto">
-    <div class="row mx-auto justify-content-center">
-      <div id="score_container">
-        <div>
-          <Score ref="score" />
-        </div>
-
-      </div>
-      <div class="col-12">
-        <div id="gameover_container">
-          <GameOverScreen />
-        </div>
-
-        <div>
-          <Rounds @completedRound="handleCompletedRound"      @defeatedEnemy="handleDefeatedEnemy"
-            @completedCombo="handleCompletedCombo" @completeLevel="handleCompletedLevel" />
-        </div>
-      </div>
-
-      <div id="timer_frame">
-        <Timer ref="timer" @gameOver="handleGameOver" />
-      </div>
-
-
-      <div>
-        <GameState @newGame="handleNewGame" />
-      </div>
-    </div>
-
-  </div> -->
 
 </template>
 
@@ -185,54 +172,89 @@ export default {
   }
 }
 
+/*************************
+world and enemy 
+**************************/
+#my_main_frame {
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  left: 12%;
+
+  width: 50%;
+  height: 33%;
+
+  border: 2px dashed black;
+}
+
 #my_world_frame {
   position: absolute;
   z-index: 2;
-  top: 10.5%;
-  left: 14.5%;
+  top: 0;
+  left: 0;
 
-  width: 47%;
+  width: 100%;
   height: 100%;
+
+  /* border: 2px dashed black; */
 }
 
 /* to fix !!! */
 #my_enemy_frame {
+  overflow: visible;
   position: absolute;
   z-index: 2;
-  top: 10%;
-  left: 25%;
+  top: 0%;
+  left: 20%;
 
-  width: 30%;
-  height: 30%;
+  width: 55%;
+  height: 60%;
+
+  /* border: 2px dashed black; */
 }
 
-#my_combos_frame {
+/*************************
+combo, score and actions
+**************************/
+
+#my_second_frame {
   position: absolute;
   z-index: 2;
-  top: 59%;
-  left: 23.5%;
-
-  width: 51%;
-  height: 23%;
-}
-
-#my_rounds_frame {
-  position: absolute;
-  z-index: 2;
-  top: 2.5%;
+  top: 58.5%;
   left: 22%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
+  width: 52%;
+  height: 28%;
+
+  /* border: 2px dashed black; */
+}
+
+
+#my_combos_frame {
+  width: 100%;
+  height: 42%;
+
+  /* border: 2px dashed black; */
 }
 
 #my_score_frame {
-  min-width: 100px;
-  min-height: 100px;
+  width: 100%;
 
+  /* border: 2px dashed black; */
+}
+
+#my_rounds_frame {
+  width: 60%;
   position: absolute;
   z-index: 2;
-  top: 82.5%;
-  left: 24%;
+  top: -25%;
+  left: 15%;
+
+  /* border: 2px dashed black; */
 }
 
 #my_timer_frame {

@@ -20,7 +20,8 @@ export default {
 
 #my_world{
   color:black;
-  height: 33%;
+  height: 100%;
+  width: auto;
 
   img {
     height: 100%;

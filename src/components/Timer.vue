@@ -26,9 +26,7 @@ export default {
         this.oldState = newState;
       }
       if (newState === 'levelComplete') {
-        console.log("il watch di timer viene chiamato...")
         this.reduceMaxTime();
-        this.levelCompletePoints();
       }
     }
   },
@@ -55,23 +53,30 @@ export default {
       }
     },
     restoreTimer() {
+      this.levelCompletePoints();
       this.remainingTime = this.startingTime;
     },
+    /* game over */
     timeOver() {
       this.updateGameState('gameOver');
       this.$emit('gameOver');
       this.startingTime = 15;
     },
     reduceMaxTime() {
-      this.startingTime -= 1;
-      this.remainingTime -= 1;
+      if (this.startingTime > 8) {
+        this.startingTime -= 1;
+        this.remainingTime -= 1;
+      } else {
+        this.startingTime -= 0.5;
+        this.remainingTime -= 0.5;
+      }
       console.log("il tempo diminuisce....", this.startingTime);
     },
     levelCompletePoints() {
-      const maxPoints = 500;
+      const maxPoints = 100;
       const percentage = (this.remainingTime / this.startingTime) * 100;
-      const addScore = Math.floor((percentage / 100) * maxPoints)
-      this.updateScore(addScore);
+      const addScore = Math.floor((percentage / 100) * maxPoints);
+      this.$emit('remainingTimeScore', addScore);
     }
   },
   computed: {
@@ -114,15 +119,15 @@ export default {
   font-family: alagard;
 }
 
-#my_timer{
-  height:100%;
+#my_timer {
+  height: 100%;
 }
 
-#my_hourglass{
+#my_hourglass {
   height: 45%;
   margin-bottom: -0.5rem;
 
-  img{
+  img {
     height: 100%;
     width: auto;
     object-fit: cover;
@@ -132,5 +137,4 @@ export default {
 #my_progress {
   border: 1px solid #d7d1a7;
 }
-
 </style>

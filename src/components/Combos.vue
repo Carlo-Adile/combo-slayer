@@ -93,22 +93,29 @@ export default {
 </script>
 
 <template>
+
+  <!-- root di my_name e my_info -->
   <div v-if="currentCombo" id="my_combos">
     <!-- combo name -->
     <div id="my_name">
       <p>{{ currentCombo.name }}</p>
     </div>
-    <!-- buttons to press -->
-    <div id="my_buttons">
-      <ul>
-        <li v-for="(key, index) in currentCombo.keys" :key="index">
-          <img :src="getImageSource(key)" alt="" class="img_fit" :class="{ 'pressed': index < userInput.length }" />
-        </li>
-      </ul>
-    </div>
-    <!-- damage frame -->
-    <div id="my_damage">
-      <p>{{ this.currentCombo.damage }}</p>
+
+    <div id="my_info">
+
+      <!-- buttons to press -->
+      <div id="my_buttons">
+        <ul>
+          <li v-for="(key, index) in currentCombo.keys" :key="index">
+            <img :src="getImageSource(key)" alt="" class="img_fit" :class="{ 'pressed': index < userInput.length }" />
+          </li>
+        </ul>
+      </div>
+
+      <!-- damage of current combo -->
+      <div id="my_damage">
+        <p>{{ this.currentCombo.damage }}</p>
+      </div>
     </div>
   </div>
 
@@ -136,20 +143,41 @@ export default {
 #my_combos {
   height: 100%;
   width: 100%;
+
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  margin-left: 0.5rem;
+
+  /* border: 2px dashed black; */
 }
 
 #my_name {
-  height: 20%;
+  height: 40%;
   width: 80%;
   text-align: center;
-  margin-left: 0.5rem;
   font-size: 1.4rem;
+
+  /* border: 2px dashed black; */
+}
+
+#my_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 60%;
+
+  /* border: 2px dashed black; */
 }
 
 #my_buttons {
-  height: 26%;
+  height: 80%;
   width: 80%;
-  display: flex;
+
+  /* border: 2px dashed black; */
 
   ul {
     margin: 0 auto;
@@ -161,13 +189,13 @@ export default {
       flex-wrap: nowrap;
       display: inline;
 
+      padding-left: 0.1rem;
+      padding-right: 0.1rem;
+
       img {
-        height: 30px;
-        width: 30px;
-        /* height: 80%;
-        width: 25%; */
+        width: 13%;
+        height: auto;
         object-fit: cover;
-        margin: 0.25rem;
       }
     }
   }
@@ -175,16 +203,14 @@ export default {
 
 /* danni della combo attuale */
 #my_damage {
-  position: absolute;
-  top: 20%;
-  right: 0%;
-
   width: 20%;
-  height: 26%;
+  height: 100%;
+  text-align: center;
+
+  /* border: 2px dashed black; */
 
   p {
-    font-size: 1.8rem;
-    margin: 0;
+    font-size: 1.7rem;
   }
 }
 </style>

@@ -41,12 +41,17 @@ export default {
       this.completedCombo++;
       const addScore = 10 * this.completedLevel;
       this.updateScore(addScore)
-      this.completedLevel *= 1.02;
+      this.completedLevel *= 1.01;
     },
     updateLevel() {
-      const addScore = 100;
+      const addScore = 100 * this.completedLevel;
       this.updateScore(addScore);
-      this.completedLevel *= 1.1;
+      this.completedLevel *= 1.05;
+    },
+    updateTimeScore(timeScore){
+      const addScore = timeScore * this.completedLevel;
+      console.log("hai ottenuto punti per il tempo rimanente...", addScore.toFixed(0));
+      this.updateScore(addScore);
     },
     updateNewGame() {
       console.log("reset punteggio di...", this.getScore.toFixed(0))
@@ -64,7 +69,7 @@ export default {
 
 <template>
   <div id="my_score">
-    <span>Score: {{ getScore.toFixed(0) }}</span> | <span>Multiplier: {{ this.completedLevel.toFixed(2) }} x</span>
+    <span>Score: {{ getScore.toFixed(0) }}</span> | <span>{{ this.completedLevel.toFixed(2) }} x</span>
   </div>
 </template>
 
