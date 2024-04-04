@@ -118,9 +118,6 @@ export default {
 
       </div>
 
-
-
-
     </div>
 
     <div id="my_timer_frame">
@@ -134,6 +131,8 @@ export default {
     <GameOverScreen />
 
   </div>
+
+  
 
 </template>
 

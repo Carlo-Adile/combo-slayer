@@ -60,7 +60,7 @@ export default {
 
   <audio ref="levelCompletedSound" src="./src/assets/sound/levelup.mp3"></audio>
   <audio ref="roundCompletedSound" src="./src/assets/sound/roundup.mp3"></audio>
-
+  
 </template>
 
 <style lang="scss" scoped>

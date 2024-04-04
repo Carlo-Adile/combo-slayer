@@ -54,7 +54,6 @@ export default {
 
           // Compara i due array per verificare corretto inserimento
           if (this.userInput.every((value, index) => value === this.currentComboKeys[index])) {
-            /* this.$refs.retro1.volume = 0.3; */
             this.$refs.minimalist1.play();
             if (this.$refs.minimalist1.paused) { // Controlla se il suono è in pausa
               this.$refs.minimalist1.play(); // Avvia il suono solo se è in pausa
@@ -72,6 +71,11 @@ export default {
             this.currentComboKeys = [];
             this.index = 0;
             console.log("Reset keys utente");
+
+            this.$refs.wrongButton.play();
+            if (this.$refs.wrongButton.paused) { // Controlla se il suono è in pausa
+              this.$refs.wrongButtonNoob.play(); // Avvia il suono solo se è in pausa
+            }
           }
         }
       }
@@ -124,6 +128,9 @@ export default {
   <audio ref="retro1" src="./src/assets/sound/Retro1.mp3"></audio>
   <audio ref="retro2" src="./src/assets/sound/Retro2.mp3"></audio>
   <audio ref="minimalist1" src="./src/assets/sound/Minimalist1.mp3"></audio>
+  <!-- wrong button -->
+  <audio ref="wrongButton" src="./src/assets/sound/fail2.wav"></audio>
+  <audio ref="wrongButtonNoob" src="./src/assets/sound/fail2.wav"></audio>
 
 </template>
 
