@@ -5,7 +5,7 @@ export default {
   name: "GameOverScreen",
   data() {
     return {
-
+      modalShown: false
     }
   },
   computed: {
@@ -17,6 +17,7 @@ export default {
     ...mapActions(['updateGameState']),
 
     newGame() {
+      this.modalShown = true
       this.updateGameState('preGame');
     },
     resumeGame() {
@@ -25,6 +26,8 @@ export default {
     handleKeyDown(event) {
       if (this.getGameState === 'levelComplete' && event.key === 'Enter') {
         this.updateGameState('active')
+      } else if(this.getGameState === 'preGame'){
+        this.modalShown = true
       }
     }
   },
@@ -64,6 +67,21 @@ export default {
         <button @click="resumeGame" @keydown.enter="resumeGame" tabindex="0">| Enter | Go to the next level |</button>
       </div>
     </div>
+
+    <!-- pre-game instructions -->
+    <div class="modal-overlay" v-show="getGameState === 'preGame' && this.modalShown === false ">
+      <div class="modal-content">
+        <br>
+        <h2>Welcome to Combo Slayer!</h2>
+        <p>Press directional arrows | <i class="fa-solid fa-arrow-up"></i> <i class="fa-solid fa-arrow-right"></i> <i class="fa-solid fa-arrow-down"></i> <i class="fa-solid fa-arrow-left"></i> | to complete combo and inflict damage to enemies!</p>
+        <br>
+        <h4>Beware of the time running out!</h4>
+        <p>Timebar will slightly restore every time you complete a full combo sequence </p>
+        <p>or completely upon completing a level consisting of 5 rounds when beating a whole level made of 5 rounds</p>
+        
+        <button @click="resumeGame" @keydown.enter="resumeGame" tabindex="0">| Enter | Start a new game! |</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -72,11 +90,12 @@ export default {
 @import '../assets/scss/font';
 
 * {
-  font-family: alagard;
   color: black;
 }
 
 .modal-overlay {
+  font-family: alagard;
+
   position: fixed;
   bottom: 0;
   left: 0;
@@ -93,5 +112,9 @@ export default {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
+}
+
+i{
+  font-size: 1.2rem;
 }
 </style>

@@ -72,6 +72,8 @@ export default {
             this.index = 0;
             console.log("Reset keys utente");
 
+            this.$refs.wrongButton.volume = 0.5;
+            this.$refs.wrongButtonNoob.volume = 0.5;
             this.$refs.wrongButton.play();
             if (this.$refs.wrongButton.paused) { // Controlla se il suono è in pausa
               this.$refs.wrongButtonNoob.play(); // Avvia il suono solo se è in pausa
