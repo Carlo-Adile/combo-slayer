@@ -10,7 +10,7 @@ export default {
 <template>
   <div id="my_world">
     
-    <img src="../assets/levels/level_1.png" alt="">
+    <img src="../assets/levels/Level_1.png" alt="">
   </div>
 </template>
 
