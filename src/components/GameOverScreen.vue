@@ -93,7 +93,7 @@ export default {
   color: black;
 }
 
-/* .modal-overlay {
+.modal-overlay {
   font-family: alagard;
 
   position: fixed;
@@ -112,7 +112,7 @@ export default {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-} */
+}
 
 i{
   font-size: 1.2rem;
