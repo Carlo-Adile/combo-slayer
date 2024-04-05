@@ -6,7 +6,7 @@ export const enemies = reactive ([
     "name": "Goblin Torch",
     "maxHealth": 30,
     "health": 30,
-    "image": "../src/assets/enemies/Torch_Blue.png",
+    "image": "../assets/enemies/Torch_Blue.png",
     "animationPositions": [
       { name: "animation1", x: 0, y: 0 },
       { name: "animation2", x: -192, y: 0 },
@@ -21,7 +21,7 @@ export const enemies = reactive ([
     "name": "Goblin Bomber",
     "maxHealth": 30,
     "health": 30,
-    "image": "../src/assets/enemies/TNT_Blue.png",
+    "image": "../assets/enemies/TNT_Blue.png",
     "animationPositions": [
       { name: "animation1", x: 0, y: 0 },
       { name: "animation2", x: -192, y: 0 },
@@ -36,7 +36,7 @@ export const enemies = reactive ([
     "name": "Sword Knight",
     "maxHealth": 30,
     "health": 30,
-    "image": "../src/assets/enemies/Warrior_Purple.png",
+    "image": "../assets/enemies/Warrior_Purple.png",
     "animationPositions": [
       { name: "animation1", x: 0, y: 0 },
       { name: "animation2", x: -192, y: 0 },
@@ -51,7 +51,7 @@ export const enemies = reactive ([
     "name": "Pawn Knight",
     "maxHealth": 30,
     "health": 30,
-    "image": "../src/assets/enemies/Pawn_Yellow.png",
+    "image": "../assets/enemies/Pawn_Yellow.png",
     "animationPositions": [
       { name: "animation1", x: 0, y: 0 },
       { name: "animation2", x: -192, y: 0 },
@@ -66,7 +66,7 @@ export const enemies = reactive ([
     "name": "Pawn Knight",
     "maxHealth": 30,
     "health": 30,
-    "image": "../src/assets/enemies/Archer_Red.png",
+    "image": "../assets/enemies/Archer_Red.png",
     "animationPositions": [
       { name: "animation1", x: 0, y: 0 },
       { name: "animation2", x: -192, y: 0 },

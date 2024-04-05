@@ -1,11 +1,6 @@
 @font-face {
-  font-family: 'headerFont';
-  src: url('./public/assets/font/GothicPixels.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'alagard';
-  src: url('./public/assets/font/alagard.ttf') format('truetype');
+  src: url('../assets/font/alagard.ttf') format('truetype');
 }
 
 $header-font: 'headerFont', sans-serif;

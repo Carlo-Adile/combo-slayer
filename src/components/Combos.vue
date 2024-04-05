@@ -25,11 +25,11 @@ export default {
         case 'ArrowUp':
           return '../assets/UI/arrowTop.png';
         case 'ArrowDown':
-          return './src/assets/UI/arrowBottom.png';
+          return '../assets/UI/arrowBottom.png';
         case 'ArrowLeft':
-          return './src/assets/UI/arrowLeft.png';
+          return '../assets/UI/arrowLeft.png';
         case 'ArrowRight':
-          return './src/assets/UI/arrowRight.png';
+          return '../assets/UI/arrowRight.png';
         default:
           return ''; // Ritorna un percorso vuoto per eventuali tasti non previsti
       }
