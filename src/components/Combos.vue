@@ -23,7 +23,7 @@ export default {
       //sostituisci i bottoni con i percorsi delle immagini
       switch (key) {
         case 'ArrowUp':
-          return './src/assets/UI/arrowTop.png';
+          return '../assets/UI/arrowTop.png';
         case 'ArrowDown':
           return './src/assets/UI/arrowBottom.png';
         case 'ArrowLeft':
