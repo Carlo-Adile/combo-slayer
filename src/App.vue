@@ -66,13 +66,24 @@ export default {
 
   <div id="app_main">
     <GameMaster />
+
+    
   </div>
 
   <div id="app_footer">
     <hr class="w-100 border border-2 border-danger">
+
+    
   </div>
 
 
+  <!-- particles animation on bg -->
+  <div class="animation-wrapper">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+  </div>
   
 
 
@@ -97,6 +108,8 @@ export default {
   height: 12vh;
 
   position: relative;
+  z-index: 5;
+  background-color: transparent;
 
   hr {
     position: absolute;
@@ -152,19 +165,20 @@ $time-4: 200s;
 .page-bg,
 .animation-wrapper {
   position: fixed;
+  /* z-index: -1; */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
 
-/* .page-bg {
+.page-bg {
   background: $color-bg;
   background-blend-mode: screen;
   background-size: cover;
   filter: grayscale(100%);
-  z-index: -1;
-} */
+  z-index: 3;
+}
 
 .particle,
 .particle:after {

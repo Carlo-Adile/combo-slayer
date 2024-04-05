@@ -133,6 +133,8 @@ export default {
 }
 
 #my_timer {
+  position: relative;
+  z-index: 5;
   height: 100%;
 }
 
