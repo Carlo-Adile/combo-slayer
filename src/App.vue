@@ -73,15 +73,10 @@ export default {
   </div>
 
 
-  <!-- particles animation on bg -->
-  <div class="animation-wrapper">
-  <div class="particle particle-1"></div>
-  <div class="particle particle-2"></div>
-  <div class="particle particle-3"></div>
-  <div class="particle particle-4"></div>
+  
 
 
-</div>
+
 
 
 </template>
@@ -102,7 +97,8 @@ export default {
   height: 12vh;
 
   position: relative;
-  hr{
+
+  hr {
     position: absolute;
     bottom: 0;
   }
@@ -120,7 +116,8 @@ export default {
   height: 8vh;
 
   position: relative;
-  hr{
+
+  hr {
     position: absolute;
     top: 0;
   }
@@ -139,9 +136,11 @@ $time-4: 200s;
 /* mixins */
 @function particles($max) {
   $val: 0px 0px $color-particle;
+
   @for $i from 1 through $max {
     $val: #{$val}, random($spacing)+px random($spacing)+px $color-particle;
   }
+
   @return $val;
 }
 
@@ -150,20 +149,8 @@ $time-4: 200s;
   border-radius: 50%;
 }
 
-/* Styles */
-html, body {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4rem;
-  overflow: hidden;
-}
-
-.page-bg, .animation-wrapper {
+.page-bg,
+.animation-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -171,15 +158,16 @@ body {
   height: 100%;
 }
 
-.page-bg {
+/* .page-bg {
   background: $color-bg;
   background-blend-mode: screen;
   background-size: cover;
   filter: grayscale(100%);
   z-index: -1;
-}
+} */
 
-.particle, .particle:after {
+.particle,
+.particle:after {
   background: transparent;
 }
 
@@ -239,31 +227,32 @@ body {
   from {
     transform: translateY(0px);
   }
+
   to {
     transform: translateY($spacing * -1);
   }
 }
 
-.page-wrapper {
+/* .page-wrapper {
   text-align: center;
   color: #fff;
   z-index: 2;
-}
+} */
 
-h4 {
+/* h4 {
   color: #fff;
   font-family: Monoton;
   -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
   -moz-animation: neon1 1.5s ease-in-out infinite alternate;
   animation: neon1 1.5s ease-in-out infinite alternate;
-}
+} */
 
-h4:hover {
+/* h4:hover {
   color: #FF1177;
   -webkit-animation: none;
   -moz-animation: none;
   animation: none;
-}
+} */
 
 /*glow for webkit*/
 
@@ -278,6 +267,7 @@ h4:hover {
       0 0 100px #FF1177,
       0 0 150px #FF1177;
   }
+
   to {
     text-shadow: 0 0 5px #fff,
       0 0 10px #fff,
@@ -303,6 +293,7 @@ h4:hover {
       0 0 100px #FF1177,
       0 0 150px #FF1177;
   }
+
   to {
     text-shadow: 0 0 5px #fff,
       0 0 10px #fff,
@@ -328,6 +319,7 @@ h4:hover {
       0 0 100px #FF1177,
       0 0 150px #FF1177;
   }
+
   to {
     text-shadow: 0 0 5px #fff,
       0 0 10px #fff,
@@ -339,6 +331,4 @@ h4:hover {
       0 0 75px #FF1177;
   }
 }
-
-
 </style>
