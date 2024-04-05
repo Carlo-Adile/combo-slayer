@@ -34,7 +34,7 @@ export default {
 @import '../assets/scss/structure';
 
 * {
-  font-family: $header-font;
+  font-family: alagard;
 }
 
 #top_banner {
