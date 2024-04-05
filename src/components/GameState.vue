@@ -74,7 +74,7 @@ export default {
     <!-- <p>Stato di gioco: {{ this.getGameState }}</p> -->
     <!-- <p v-if="getGameState === 'preGame'">Premi qualsiasi tasto per iniziare</p>
     <p v-if="getGameState === 'levelComplete'">Premi enter per iniziare il prossimo livello</p> -->
-    <button id="audio_button" @click="disableTrack1"></button>
+    <!-- <button id="audio_button" @click="disableTrack1"></button> -->
   </div>
 
   <!-- music -->

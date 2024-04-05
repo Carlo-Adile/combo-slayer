@@ -126,7 +126,6 @@ export default {
   </div>
 
   <!-- fx -->
-  <audio ref="fastBip" src="../assets/sound/fast_bip.mp3"></audio>
   <audio ref="retro1" src="../assets/sound/Retro1.mp3"></audio>
   <audio ref="retro2" src="../assets/sound/Retro2.mp3"></audio>
   <audio ref="minimalist1" src="../assets/sound/Minimalist1.mp3"></audio>
