@@ -126,13 +126,13 @@ export default {
   </div>
 
   <!-- fx -->
-  <audio ref="fastBip" src="./src/assets/sound/fast_bip.mp3"></audio>
-  <audio ref="retro1" src="./src/assets/sound/Retro1.mp3"></audio>
-  <audio ref="retro2" src="./src/assets/sound/Retro2.mp3"></audio>
-  <audio ref="minimalist1" src="./src/assets/sound/Minimalist1.mp3"></audio>
+  <audio ref="fastBip" src="../assets/sound/fast_bip.mp3"></audio>
+  <audio ref="retro1" src="../assets/sound/Retro1.mp3"></audio>
+  <audio ref="retro2" src="../assets/sound/Retro2.mp3"></audio>
+  <audio ref="minimalist1" src="../assets/sound/Minimalist1.mp3"></audio>
   <!-- wrong button -->
-  <audio ref="wrongButton" src="./src/assets/sound/fail2.wav"></audio>
-  <audio ref="wrongButtonNoob" src="./src/assets/sound/fail2.wav"></audio>
+  <audio ref="wrongButton" src="../assets/sound/fail2.wav"></audio>
+  <audio ref="wrongButtonNoob" src="../assets/sound/fail2.wav"></audio>
 
 </template>
 

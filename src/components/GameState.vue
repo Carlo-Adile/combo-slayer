@@ -78,9 +78,9 @@ export default {
   </div>
 
   <!-- music -->
-  <audio ref="track1" src="./src/assets/sound/track1.mp3"></audio>
+  <audio ref="track1" src="../assets/sound/track1.mp3"></audio>
   <!-- game over -->
-  <audio ref="gameOver" src="./src/assets/sound/game_over.mp3"></audio>
+  <audio ref="gameOver" src="../assets/sound/game_over.mp3"></audio>
   
 </template>
 

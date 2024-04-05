@@ -58,8 +58,8 @@ export default {
     <p>Level {{ this.currentLevel }} | Round {{ this.currentRound }}</p>
   </div>
 
-  <audio ref="levelCompletedSound" src="./src/assets/sound/levelup.mp3"></audio>
-  <audio ref="roundCompletedSound" src="./src/assets/sound/roundup.mp3"></audio>
+  <audio ref="levelCompletedSound" src="../assets/sound/levelup.mp3"></audio>
+  <audio ref="roundCompletedSound" src="../assets/sound/roundup.mp3"></audio>
   
 </template>
 
