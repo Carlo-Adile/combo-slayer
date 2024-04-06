@@ -67,8 +67,8 @@ export default {
         this.startingTime -= 2;
         this.remainingTime -= 2;
       } else if (this.startingTime <= 12 && this.startingTime > 9) {
-        this.startingTime -= 0.5;
-        this.remainingTime -= 0.5;
+        this.startingTime -= 0.75;
+        this.remainingTime -= 0.75;
       } else if (this.startingTime <= 9 && this.startingTime > 5) {
         this.startingTime -= 0.25;
         this.remainingTime -= 0.25;

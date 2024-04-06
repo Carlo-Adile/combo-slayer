@@ -65,17 +65,15 @@ export default {
   </header>
 
   <div id="app_main">
-    <GameMaster />
-
     
+    <div id="game_frame">
+      <GameMaster />
+    </div>
   </div>
 
   <div id="app_footer">
     <hr class="w-100 border border-2 border-danger">
-
-    
   </div>
-
 
   <!-- particles animation on bg -->
   <div class="animation-wrapper">
@@ -84,11 +82,6 @@ export default {
     <div class="particle particle-3"></div>
     <div class="particle particle-4"></div>
   </div>
-  
-
-
-
-
 
 </template>
 
@@ -120,7 +113,16 @@ export default {
 #app_main {
   @include align_all;
   height: 80vh;
+  background-color: transparent;
+}
 
+#game_frame{
+  @include align_all;
+  width: 100%;
+  height: 80%;
+  max-height: 800px;
+  
+  background-color: transparent;
 }
 
 #app_footer {
