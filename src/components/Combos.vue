@@ -121,6 +121,7 @@ export default {
       <!-- damage of current combo -->
       <div id="my_damage">
         <p>{{ this.currentCombo.damage }}</p>
+        <img src="../assets/icons/sword.png" alt="">
       </div>
     </div>
   </div>
@@ -213,12 +214,20 @@ export default {
 #my_damage {
   width: 20%;
   height: 100%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content:center ;
 
   /* border: 2px dashed black; */
 
   p {
     font-size: 1.7rem;
+    padding: 0;
+    margin: 0;
+  }
+  img{
+    width: 20px;
+    height: 20px;
   }
 }
 </style>

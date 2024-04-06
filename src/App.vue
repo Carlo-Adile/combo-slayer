@@ -119,7 +119,7 @@ export default {
 #game_frame{
   @include align_all;
   width: 100%;
-  height: 80%;
+  height: 100%;
   max-height: 800px;
   
   background-color: transparent;

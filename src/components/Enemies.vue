@@ -95,7 +95,7 @@ export default {
     <!-- progress health -->
     <div id="my_progress">
       <div class="progress mx-auto" id="my_healthbar">
-        <img src="../assets/UI/healthbar.png" alt="">
+        <!-- <img src="../assets/UI/healthbar.png" alt=""> -->
         <div class="progress-bar bg-danger" role="progressbar"
           :style="{ width: (currentEnemy.health / currentEnemy.maxHealth * 100) + '%' }"
           :aria-valuenow="currentEnemy.health" :aria-valuemin="0" :aria-valuemax="currentEnemy.maxHealth">
@@ -108,18 +108,13 @@ export default {
 
     <!-- idle enemy -->
     <div id="my_enemy_idle">
-
       <div class="enemy_animation" :style="enemyAnimationStyle">
-          <!-- ENEMY HERE -->
-        </div>
+        <!-- ENEMY HERE -->
+      </div>
 
-      <!-- <div id="enemy_resize">
-        
-      </div> -->
     </div>
-
-
   </div>
+
 </template>
 
 <style lang="scss" scoped>
@@ -135,9 +130,9 @@ export default {
 #my_enemy {
   display: flex;
   flex-direction: column;
-
   height: 100%;
   width: auto;
+  position: relative;
 
   p {
     margin: 0;
@@ -156,28 +151,17 @@ export default {
 }
 
 #my_progress {
-  position: relative;
   width: 100%;
   height: 20%;
-  margin-top: 0.3rem;
   font-size: 0.8rem;
-
+  margin-top: 0.25rem;
   /* border: 1px dashed black; */
-
-  img {
-    position: absolute;
-    top: -45%;
-    left: 0;
-    z-index: -1;
-
-    width: 100%;
-    height: 130%;
-  }
 }
 
 #my_healthbar {
-  height: 10px;
+  height: 14px;
   width: 110px;
+  border: 1px solid black;
 }
 
 /* enemy idle */
@@ -192,16 +176,6 @@ export default {
   /* border: 2px dashed black; */
 }
 
-/* #enemy_resize{
-  width: 100%;
-  height: 80%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-} */
-
 .enemy_animation {
   width: 192px;
   height: 192px;
@@ -209,7 +183,7 @@ export default {
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(243, 6, 6, 0.703);
 
-  min-width: 192px; /* Assicurati che la larghezza non superi mai il 100% del genitore */
+  min-width: 192px;
   min-height: 192px;
 }
 </style>

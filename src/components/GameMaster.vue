@@ -132,11 +132,10 @@ export default {
 
   </div>
 
-  
-
 </template>
 
 <style lang="scss" scoped>
+
 * {
   padding: 0;
   margin: 0 auto;
@@ -145,10 +144,6 @@ export default {
 /* 
   New CSS 
 */
-
-.debug {
-  /* border: 1px dashed white; */
-}
 
 #game_master_ui {
   display: flex;
@@ -172,15 +167,15 @@ export default {
 }
 
 /*************************
-world and enemy 
+world and enemy; rounds and levels 
 **************************/
 #my_main_frame {
   position: absolute;
   z-index: 2;
   top: 10%;
-  left: 12%;
+  left: 12.5%;
 
-  width: 50%;
+  width: 75%;
   height: 33%;
 
   /* border: 2px dashed black; */
@@ -204,12 +199,22 @@ world and enemy
   position: absolute;
   z-index: 2;
   top: 0%;
-  left: 20%;
+  left: 22%;
 
   width: 55%;
   height: 60%;
 
   /* border: 2px dashed black; */
+}
+
+#my_rounds_frame {
+  width: 50%;
+  position: absolute;
+  z-index: 2;
+  top: -25%;
+  left: 5%;
+
+  /* border: 2px dashed white; */
 }
 
 /*************************
@@ -246,15 +251,7 @@ combo, score and actions
   /* border: 2px dashed black; */
 }
 
-#my_rounds_frame {
-  width: 60%;
-  position: absolute;
-  z-index: 2;
-  top: -25%;
-  left: 15%;
 
-  /* border: 2px dashed black; */
-}
 
 #my_timer_frame {
   position: absolute;
