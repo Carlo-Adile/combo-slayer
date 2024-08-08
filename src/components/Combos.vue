@@ -216,7 +216,7 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content:center ;
+  justify-content: center;
 
   /* border: 2px dashed black; */
 
@@ -225,7 +225,8 @@ export default {
     padding: 0;
     margin: 0;
   }
-  img{
+
+  img {
     width: 20px;
     height: 20px;
   }

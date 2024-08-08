@@ -26,7 +26,7 @@ export default {
     handleKeyDown(event) {
       if (this.getGameState === 'levelComplete' && event.key === 'Enter') {
         this.updateGameState('active')
-      } else if(this.getGameState === 'preGame'){
+      } else if (this.getGameState === 'preGame') {
         this.modalShown = true
       }
     }
@@ -69,17 +69,22 @@ export default {
     </div>
 
     <!-- pre-game instructions -->
-    <div class="modal-overlay" v-show="getGameState === 'preGame' && this.modalShown === false ">
+    <div class="modal-overlay" v-show="getGameState === 'preGame' && this.modalShown === false">
       <div class="modal-content">
         <br>
         <h2>Welcome to Combo Slayer!</h2>
-        <p>Press directional arrows | <i class="fa-solid fa-arrow-left"></i> <i class="fa-solid fa-arrow-up"></i> <i class="fa-solid fa-arrow-down"></i> <i class="fa-solid fa-arrow-right"></i>   | to complete combo and inflict damage to enemies!</p>
+        <p>Press directional arrows | <i class="fa-solid fa-arrow-left"></i> <i class="fa-solid fa-arrow-up"></i> <i
+            class="fa-solid fa-arrow-down"></i> <i class="fa-solid fa-arrow-right"></i> | to complete combo and inflict
+          damage to enemies!</p>
         <br>
         <h4>Beware of the time running out!</h4>
         <p>Time bar will slightly restore every time you complete a full combo sequence, </p>
         <p>or completely upon completing a level consisting of 5 rounds.</p>
-        
-        <button @click="resumeGame" @keydown.enter="resumeGame" tabindex="0">| Enter | Start a new game! |</button>
+
+        <button class="bg-secondary mx-5" @click="resumeGame" @keydown.enter="resumeGame" tabindex="0">
+          | Enter | Start a
+          new
+          game! |</button>
       </div>
     </div>
   </div>
@@ -109,16 +114,17 @@ export default {
 }
 
 .modal-content {
+  width: 80%;
   background-color: white;
   padding: 20px;
   border-radius: 5px;
 }
 
-i{
+i {
   font-size: 1.2rem;
 }
 
-p{
+p {
   font-size: 1.1rem;
   line-height: 0.9rem;
 }

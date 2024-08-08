@@ -33,6 +33,8 @@ export default {
     ...mapActions(['updateGameState']),
 
     startNewGame() {
+      this.$refs.track1.volume = 0.1;
+      this.$refs.track1.play();
       if (this.getGameState === 'preGame') {
         this.updateGameState('active');
         this.$emit('newGame');
@@ -50,7 +52,7 @@ export default {
         this.$refs.track1.play();
       }
       else if (this.getGameState === 'gameOver') {
-        
+
         console.log("non puoi entrare in pausa da game over")
       }
     },
@@ -81,7 +83,7 @@ export default {
   <audio ref="track1" src="../assets/sound/track1.mp3"></audio>
   <!-- game over -->
   <audio ref="gameOver" src="../assets/sound/game_over.mp3"></audio>
-  
+
 </template>
 
 
@@ -89,35 +91,34 @@ export default {
 @import '../assets/scss/font';
 @import '../assets/scss/structure';
 
-*{
+* {
   font-family: alagard;
 }
 
-#state_frame{
+#state_frame {
   position: absolute;
   top: 0%;
   left: 0%;
   display: flex;
   align-items: center;
 
-  p{
+  p {
     height: 20px;
     display: inline;
     font-size: 1.2rem;
   }
 
-  #audio_button{
+  #audio_button {
     position: fixed;
     bottom: 3%;
     left: 97%;
     display: inline;
     background-color: rgba(255, 255, 255, 0.384);
     width: 40px;
-    height:40px;
+    height: 40px;
     background-image: url(../src/assets/UI/Pressed_03.png);
     background-repeat: no-repeat;
     background-size: cover;
   }
 }
-
 </style>

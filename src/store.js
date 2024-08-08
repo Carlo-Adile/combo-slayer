@@ -13,7 +13,7 @@ export default createStore({
     increaseScore(state, addScore) {
       state.score += addScore;
     },
-    resetScore(state){
+    resetScore(state) {
       state.finalScore = state.score;
       state.score = 0;
     }
@@ -25,7 +25,7 @@ export default createStore({
     updateScore({ commit }, addScore) {
       commit('increaseScore', addScore);
     },
-    resetScore({ commit }){
+    resetScore({ commit }) {
       commit('resetScore');
     }
   },
@@ -36,7 +36,7 @@ export default createStore({
     getScore(state) {
       return state.score;
     },
-    getFinalScore(state){
+    getFinalScore(state) {
       return state.finalScore;
     }
   }
